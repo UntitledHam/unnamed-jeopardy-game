@@ -1,0 +1,217 @@
+[
+    {
+        "category": "society_and_culture",
+        "id": "6293ec8d7f41d6338b96eef9",
+        "correctAnswer": "Sigmund Freud",
+        "incorrectAnswers": [
+            "Francis Bacon",
+            "George Washington",
+            "Francisco Pizarro"
+        ],
+        "question": {
+            "text": "Which influential neurologist founded psychoanalysis, which involved the investigation of the subconscious, dreams and human mind?"
+        },
+        "tags": [
+            "people",
+            "history",
+            "society_and_culture",
+            "psychology"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c397cc59eab6f950d92",
+        "correctAnswer": "ABBA",
+        "incorrectAnswers": [
+            "The Kinks",
+            "Oasis",
+            "Nirvana"
+        ],
+        "question": {
+            "text": "Which band was Benny Andersson a member of?"
+        },
+        "tags": [
+            "music",
+            "bands"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "geography",
+        "id": "623741f0cb85f7ce9e949d99",
+        "correctAnswer": "Poland",
+        "incorrectAnswers": [
+            "Bulgaria",
+            "Germany",
+            "Hungary"
+        ],
+        "question": {
+            "text": "Warsaw is the capital city of which country?"
+        },
+        "tags": [
+            "geography"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "geography",
+        "id": "622a1c357cc59eab6f94fd4d",
+        "correctAnswer": "Kazakhstan",
+        "incorrectAnswers": [
+            "Mongolia",
+            "Saudi Arabia",
+            "Afghanistan"
+        ],
+        "question": {
+            "text": "What is the largest landlocked country in the world?"
+        },
+        "tags": [
+            "records",
+            "geography"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "science",
+        "id": "645cb0e67d263fd509704392",
+        "correctAnswer": "Lemurs",
+        "incorrectAnswers": [
+            "Tarsiers",
+            "Bushbabies",
+            "Gibbons"
+        ],
+        "question": {
+            "text": "Pottos and tarsiers are closely related to what small primates from Madagascar?"
+        },
+        "tags": [
+            "primates",
+            "animals",
+            "africa"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "geography",
+        "id": "639c9dab929b90846f2fc98b",
+        "correctAnswer": "Rome",
+        "incorrectAnswers": [
+            "Athens",
+            "Paris",
+            "London"
+        ],
+        "question": {
+            "text": "The Colosseum is an iconic structure in what city?"
+        },
+        "tags": [
+            "architecture",
+            "geography",
+            "tourist_attractions",
+            "buildings"
+        ],
+        "type": "text_choice",
+        "difficulty": "easy",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "food_and_drink",
+        "id": "624c605f50d1a5e051325a56",
+        "correctAnswer": "Feijoada",
+        "incorrectAnswers": [
+            "Poutine",
+            "Couscous",
+            "Ambuyat"
+        ],
+        "question": {
+            "text": "Which of these dishes is most associated with Brazil?"
+        },
+        "tags": [
+            "food",
+            "food_and_drink"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c347cc59eab6f94fb92",
+        "correctAnswer": "\"Welcome to the Black Parade\" by My Chemical Romance",
+        "incorrectAnswers": [
+            "\"Man! I Feel Like a Woman!\" by Shania Twain",
+            "\"Chimpan-A to Chimpan-Z\" by Troy McClure",
+            "\"Gimme More\" by Britney Spears"
+        ],
+        "question": {
+            "text": "Which song begins with the lyrics: \"When I was a young boy my father took me into the city to see a marching band.\"?"
+        },
+        "tags": [
+            "lyrics",
+            "songs",
+            "music"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c357cc59eab6f94fd66",
+        "correctAnswer": "Tina Turner",
+        "incorrectAnswers": [
+            "Britney Spears",
+            "Lady Gaga",
+            "Toni Braxton"
+        ],
+        "question": {
+            "text": "Whose real name is Annie Mae Bullock?"
+        },
+        "tags": [
+            "pseudonyms",
+            "people",
+            "music"
+        ],
+        "type": "text_choice",
+        "difficulty": "hard",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "arts_and_literature",
+        "id": "622a1c397cc59eab6f950e86",
+        "correctAnswer": "Neil Gaiman",
+        "incorrectAnswers": [
+            "Stephen King",
+            "H. P. Lovecraft",
+            "Douglas Adams"
+        ],
+        "question": {
+            "text": "Which author wrote 'Coraline'?"
+        },
+        "tags": [
+            "arts_and_literature"
+        ],
+        "type": "text_choice",
+        "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    }
+]
