@@ -1,21 +1,20 @@
 [
     {
-        "category": "society_and_culture",
-        "id": "6293ec8d7f41d6338b96eef9",
-        "correctAnswer": "Sigmund Freud",
+        "category": "music",
+        "id": "622a1c347cc59eab6f94fba0",
+        "correctAnswer": "\"Don't Stop Me Now\" by Queen",
         "incorrectAnswers": [
-            "Francis Bacon",
-            "George Washington",
-            "Francisco Pizarro"
+            "\"Gimme More\" by Britney Spears",
+            "\"Welcome to the Black Parade\" by My Chemical Romance",
+            "\"Crazy Train\" by Ozzy Osbourne"
         ],
         "question": {
-            "text": "Which influential neurologist founded psychoanalysis, which involved the investigation of the subconscious, dreams and human mind?"
+            "text": "Which song begins with the lyrics: \"Tonight, I\u2019m gonna have myself a real good time / I feel alive / And the world, I'll turn it inside out, yeah / I'm floating around in ecstasy...\"?"
         },
         "tags": [
-            "people",
-            "history",
-            "society_and_culture",
-            "psychology"
+            "songs",
+            "lyrics",
+            "music"
         ],
         "type": "text_choice",
         "difficulty": "medium",
@@ -24,18 +23,64 @@
     },
     {
         "category": "music",
-        "id": "622a1c397cc59eab6f950d92",
-        "correctAnswer": "ABBA",
+        "id": "622a1c347cc59eab6f94fb93",
+        "correctAnswer": "\"September\" by Earth, Wind & Fire",
         "incorrectAnswers": [
-            "The Kinks",
-            "Oasis",
-            "Nirvana"
+            "\"Yo Home to Bel-Air\"",
+            "\"What I Got\" by Sublime",
+            "\"American Pie\" by Don McLean"
         ],
         "question": {
-            "text": "Which band was Benny Andersson a member of?"
+            "text": "Which song begins with the lyrics: \"Do you remember, the 21st night of September?\"?"
+        },
+        "tags": [
+            "songs",
+            "lyrics",
+            "general_knowledge",
+            "music"
+        ],
+        "type": "text_choice",
+        "difficulty": "easy",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c357cc59eab6f94ff6e",
+        "correctAnswer": "Jamiroquai",
+        "incorrectAnswers": [
+            "Stereolab",
+            "Simply Red",
+            "Massive Attack"
+        ],
+        "question": {
+            "text": "Which Band Were At The Number One Spot In 1998 With \u201cDeeper Underground\u201d?"
+        },
+        "tags": [
+            "songs",
+            "bands",
+            "1990's"
+        ],
+        "type": "text_choice",
+        "difficulty": "hard",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c397cc59eab6f950cbf",
+        "correctAnswer": "Pink Floyd",
+        "incorrectAnswers": [
+            "Wings",
+            "Rudimental",
+            "The Alan Parsons Project"
+        ],
+        "question": {
+            "text": "Which English rock band released the album 'The Dark Side of the Moon'?"
         },
         "tags": [
             "music",
+            "music_albums",
             "bands"
         ],
         "type": "text_choice",
@@ -44,149 +89,42 @@
         "isNiche": false
     },
     {
-        "category": "geography",
-        "id": "623741f0cb85f7ce9e949d99",
-        "correctAnswer": "Poland",
-        "incorrectAnswers": [
-            "Bulgaria",
-            "Germany",
-            "Hungary"
-        ],
-        "question": {
-            "text": "Warsaw is the capital city of which country?"
-        },
-        "tags": [
-            "geography"
-        ],
-        "type": "text_choice",
-        "difficulty": "medium",
-        "regions": [],
-        "isNiche": false
-    },
-    {
-        "category": "geography",
-        "id": "622a1c357cc59eab6f94fd4d",
-        "correctAnswer": "Kazakhstan",
-        "incorrectAnswers": [
-            "Mongolia",
-            "Saudi Arabia",
-            "Afghanistan"
-        ],
-        "question": {
-            "text": "What is the largest landlocked country in the world?"
-        },
-        "tags": [
-            "records",
-            "geography"
-        ],
-        "type": "text_choice",
-        "difficulty": "medium",
-        "regions": [],
-        "isNiche": false
-    },
-    {
-        "category": "science",
-        "id": "645cb0e67d263fd509704392",
-        "correctAnswer": "Lemurs",
-        "incorrectAnswers": [
-            "Tarsiers",
-            "Bushbabies",
-            "Gibbons"
-        ],
-        "question": {
-            "text": "Pottos and tarsiers are closely related to what small primates from Madagascar?"
-        },
-        "tags": [
-            "primates",
-            "animals",
-            "africa"
-        ],
-        "type": "text_choice",
-        "difficulty": "medium",
-        "regions": [],
-        "isNiche": false
-    },
-    {
-        "category": "geography",
-        "id": "639c9dab929b90846f2fc98b",
-        "correctAnswer": "Rome",
-        "incorrectAnswers": [
-            "Athens",
-            "Paris",
-            "London"
-        ],
-        "question": {
-            "text": "The Colosseum is an iconic structure in what city?"
-        },
-        "tags": [
-            "architecture",
-            "geography",
-            "tourist_attractions",
-            "buildings"
-        ],
-        "type": "text_choice",
-        "difficulty": "easy",
-        "regions": [],
-        "isNiche": false
-    },
-    {
-        "category": "food_and_drink",
-        "id": "624c605f50d1a5e051325a56",
-        "correctAnswer": "Feijoada",
-        "incorrectAnswers": [
-            "Poutine",
-            "Couscous",
-            "Ambuyat"
-        ],
-        "question": {
-            "text": "Which of these dishes is most associated with Brazil?"
-        },
-        "tags": [
-            "food",
-            "food_and_drink"
-        ],
-        "type": "text_choice",
-        "difficulty": "medium",
-        "regions": [],
-        "isNiche": false
-    },
-    {
         "category": "music",
-        "id": "622a1c347cc59eab6f94fb92",
-        "correctAnswer": "\"Welcome to the Black Parade\" by My Chemical Romance",
+        "id": "64720cd93bbb58c31f411ccf",
+        "correctAnswer": "Aretha Franklin",
         "incorrectAnswers": [
-            "\"Man! I Feel Like a Woman!\" by Shania Twain",
-            "\"Chimpan-A to Chimpan-Z\" by Troy McClure",
-            "\"Gimme More\" by Britney Spears"
+            "Gladys Knight",
+            "Diana Ross",
+            "Patti LaBelle"
         ],
         "question": {
-            "text": "Which song begins with the lyrics: \"When I was a young boy my father took me into the city to see a marching band.\"?"
+            "text": "Which singer had a 1967 hit with \"You Make Me Feel Like A Natural Woman\"?"
         },
         "tags": [
-            "lyrics",
             "songs",
-            "music"
+            "soul_music",
+            "music",
+            "1960's"
         ],
         "type": "text_choice",
-        "difficulty": "medium",
+        "difficulty": "hard",
         "regions": [],
         "isNiche": false
     },
     {
         "category": "music",
-        "id": "622a1c357cc59eab6f94fd66",
-        "correctAnswer": "Tina Turner",
+        "id": "622a1c357cc59eab6f94fdc2",
+        "correctAnswer": "I Ran (So Far Away)",
         "incorrectAnswers": [
-            "Britney Spears",
-            "Lady Gaga",
-            "Toni Braxton"
+            "I Jumped (So Far Away)",
+            "I Hid (So Far Away)",
+            "I Long (So Far Away)"
         ],
         "question": {
-            "text": "Whose real name is Annie Mae Bullock?"
+            "text": "Which of these was a hit song by A Flock of Seagulls?"
         },
         "tags": [
-            "pseudonyms",
-            "people",
+            "songs",
             "music"
         ],
         "type": "text_choice",
@@ -195,22 +133,88 @@
         "isNiche": false
     },
     {
-        "category": "arts_and_literature",
-        "id": "622a1c397cc59eab6f950e86",
-        "correctAnswer": "Neil Gaiman",
+        "category": "music",
+        "id": "636a52a1990390307063f3ae",
+        "correctAnswer": "Sea of Love",
         "incorrectAnswers": [
-            "Stephen King",
-            "H. P. Lovecraft",
-            "Douglas Adams"
+            "The Chain",
+            "Ring of Fire",
+            "The Man Who Sold the World"
         ],
         "question": {
-            "text": "Which author wrote 'Coraline'?"
+            "text": "Which song was originally recorded by Phil Philips and was later covered by The Honeydrippers?"
         },
         "tags": [
-            "arts_and_literature"
+            "music",
+            "cover_song",
+            "songs",
+            "musicians"
+        ],
+        "type": "text_choice",
+        "difficulty": "hard",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c367cc59eab6f950394",
+        "correctAnswer": "Joni Mitchell",
+        "incorrectAnswers": [
+            "Leonard Cohen",
+            "Elton John",
+            "Tom Waits"
+        ],
+        "question": {
+            "text": "Who Released The 70's Album Entitled \"Blue\"?"
+        },
+        "tags": [
+            "music"
+        ],
+        "type": "text_choice",
+        "difficulty": "hard",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c387cc59eab6f950b1f",
+        "correctAnswer": "Spice Girls",
+        "incorrectAnswers": [
+            "Girls Aloud",
+            "All Saints",
+            "B*Witched"
+        ],
+        "question": {
+            "text": "Which 90's girl group was Victoria Beckham a member of?"
+        },
+        "tags": [
+            "music",
+            "1990's",
+            "bands",
+            "people"
         ],
         "type": "text_choice",
         "difficulty": "medium",
+        "regions": [],
+        "isNiche": false
+    },
+    {
+        "category": "music",
+        "id": "622a1c397cc59eab6f950c8c",
+        "correctAnswer": "Metallica",
+        "incorrectAnswers": [
+            "Alice Cooper",
+            "The Pussycat Dolls",
+            "Three 6 Mafia"
+        ],
+        "question": {
+            "text": "Which American heavy metal band released the studio album 'St. Anger'?"
+        },
+        "tags": [
+            "music"
+        ],
+        "type": "text_choice",
+        "difficulty": "hard",
         "regions": [],
         "isNiche": false
     }
