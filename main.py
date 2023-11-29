@@ -1,11 +1,12 @@
 import json
 
-from api_request import make_request
+from api_request import get_questions_of_specific_category
 
 
 def main():
-    test = make_request("https://the-trivia-api.com/v2/questions/")
+    test = get_questions_of_specific_category("music")
     print(test)
     with open("test.json", "w") as f:
         json.dump(test, f, indent=4)
+        
 main()
