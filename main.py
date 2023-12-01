@@ -1,4 +1,4 @@
-from api_request import get_questions_of_specific_category, get_all_categories
+from api_request import get_questions_for_specific_category, get_all_categories
 from question import Question
 from player import Player
 from random import choice
@@ -15,7 +15,7 @@ def main():
 
 def ask_question(player: Player, category: str, **kwargs):
     is_cheat_mode = kwargs.get("cheatmode", False)
-    question_json = get_questions_of_specific_category(category)
+    question_json = get_questions_for_specific_category(category)
     the_question = Question(question_json[0])
     text = f"{the_question.question_text}\nWorth: {the_question.get_point_value()} points.\nPoints: {player.score}\n\n"
     letters = ["A", "B", "C", "D"]
