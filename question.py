@@ -15,3 +15,13 @@ class Question:
         if answer == self.correct_answer:
             return True
         return False
+
+    def get_point_value(self) -> int:
+        match self.difficulty:
+            case "easy":
+                return 100
+            case "medium":
+                return 300
+            case "hard":
+                return 500
+        return 0
