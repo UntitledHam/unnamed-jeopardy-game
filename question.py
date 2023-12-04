@@ -20,3 +20,6 @@ class Question:
     def get_point_val(self):
         return self.point_val
 
+    def get_id(self):
+        return self.id
+

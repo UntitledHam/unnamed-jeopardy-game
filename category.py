@@ -29,5 +29,16 @@ class Category:
         else:
             return ValueError("point val doesnt exist in any questions")
 
+    def find_done_point_vals(self):
+        ### returns list of point vals that are in self.done_questions
+        done_point_vals = []
+        for question in self.done_questions:
+            done_point_vals.append(question.get_point_val())
+
     def question_done(self, given_question):
-        self.questions.index(given_question, key=lambda question: question.id)
+        for question in self.questions:
+            if question.get_id() == given_question.get_id():
+                self.done_questions.append(question)
+                break
+
+
