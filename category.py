@@ -1,11 +1,13 @@
+import api_request
+
+
 class Category:
-    def __init__(self, num_questions, name):
+    def __init__(self, name):
         self.name = name
         self.questions = []
-        for question in num_questions(range):
+        api_request.get_questions_for_specific_category(self.name)
+        for
 
-            for question in
-                create question
 
 
 
