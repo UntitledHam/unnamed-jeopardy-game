@@ -9,10 +9,10 @@ def make_request(url: str) -> dict:
     return json.loads(response.text)
 
 
-def get_questions_for_specific_category(category: str) -> dict:
+def get_questions_for_specific_category_by_difficulty(category: str, difficulty: str) -> dict:
     if category == "":
         category = "general_knowledge"
-    return make_request(f"https://the-trivia-api.com/v2/questions?categories={category}&type=text-choice")
+    return make_request(f"https://the-trivia-api.com/v2/questions?categories={category}&type=text-choice&difficulties={difficulty}")
 
 
 def get_all_categories() -> list:
