@@ -13,7 +13,6 @@ class Game:
     def get_random_category(self) -> str:
         category = choice(self.all_categories)
         self.all_categories.remove(category)
-
         return category
 
     def add_player(self, player_name: str):
