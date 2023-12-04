@@ -17,5 +17,6 @@ class Question:
             return True
         return False
 
-
+    def get_point_val(self):
+        return self.point_val
 
