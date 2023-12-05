@@ -8,7 +8,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello World!"
+    html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Window Size Test</title>
+    </head>
+    <body>
+        Hello World
+    </body>
+    </html>
+    """
+
+    return html
 
 
 if __name__ == "main":
