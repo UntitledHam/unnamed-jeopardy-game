@@ -10,14 +10,16 @@ class Category:
     def set_questions(self):
         # Selects 5 random questions to add to the category: 1 easy, 2 med, 2 hard, with varying point vals
         questions = []
-        ten_easy = api_request.get_questions_for_specific_category_by_difficulty(self.name, "easy")
-        questions.append(Question(ten_easy[0], 100))
-        ten_med = api_request.get_questions_for_specific_category_by_difficulty(self.name, "medium")
-        questions.append(Question(ten_med[0], 200))
-        questions.append(Question(ten_med[1], 300))
-        ten_hard = api_request.get_questions_for_specific_category_by_difficulty(self.name, "hard")
-        questions.append(Question(ten_hard[0], 400))
-        questions.append(Question(ten_hard[1], 500))
+        difficulties = ["easy", "medium", "hard"]
+        point_value = 100
+        for difficulty in difficulties:
+            question_json = api_request.get_questions_for_specific_category_by_difficulty(self.name, difficulty)
+            questions.append(Question(question_json[0], point_value))
+            point_value += 100
+            if difficulty != "easy":
+                questions.append(Question(question_json[1], point_value))
+                point_value += 100
+
         return questions
 
     def get_question_by_point_val(self, point_val):
