@@ -35,7 +35,7 @@ class Game:
                 self.categories.append(Category(category_name))
                 self.all_possible_categories.remove(category_name)
 
-    def generate_board_html(self) -> str:
+    def generate_board_html_back_up(self) -> str:
         table_html = ""
         header_html = ""
         for category in self.categories:
@@ -48,3 +48,32 @@ class Game:
             table_html += f"<tr>{row_html}</tr>"
         
         return f""" <table>{table_html}</table>"""
+
+    def generate_board_html(self) -> str:
+        return f"""<div class="box"><div class="container">
+  <div>100</div>
+  <div>200</div>
+  <div>300</div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div></div>"""

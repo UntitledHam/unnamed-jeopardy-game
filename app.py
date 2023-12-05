@@ -5,22 +5,25 @@ app = Flask(__name__)
 game = Game()
 
 style = """ 
-td {
-  width: 33%; 
-  padding-bottom: 33%; height: 0;
+
+div {
+    width: 70%;
+    height: 70%;
+    padding: 20px;
+    margin: auto;
 }
-td div { 
-position: absolute;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+.container div {
+  background-color: blue;
+  aspect-ratio: 1;
+  text-align: center;
+  color: white;
 }
 """
-
-test_players = {"Jeff": 100, "Jimbo": 500, "Scott": 1000, "Abe": 5000, "Andrew": 3500}
-for name, score in test_players.items():
-    game.players.add_player(name)
-    game.players.find_player_by_name(name).score = score
-category_names = ["random", "random", "random", "random", "random"]
-game.generate_categories(category_names)
-
 
 
 
@@ -36,7 +39,6 @@ def home():
         </style>
     </head>
     <body>
-        {game.players.generate_leaderboard_html()}
         <br>
         {game.generate_board_html()}
         
