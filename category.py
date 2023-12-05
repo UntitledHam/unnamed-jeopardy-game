@@ -22,6 +22,7 @@ class Category:
                 questions.append(Question(question_json[1], point_value))
                 point_value += 100
 
+
         return questions
 
     def get_question_by_point_val(self, point_value):
@@ -47,11 +48,15 @@ class Category:
         done_point_vals = []
         for question in self.done_questions:
             done_point_vals.append(question.get_point_val())
+        return done_point_vals
 
     def question_done(self, given_question):
         for question in self.questions:
             if question.get_id() == given_question.get_id():
                 self.done_questions.append(question)
                 break
+
+
+
 
 

@@ -22,7 +22,5 @@ def get_all_category_names() -> list:
         categories.extend(subcategory)
     return categories
 
-def get_question_by_id(id: str):
-    return make_request(f"https://the-trivia-api.com/v2/question/{id}")
 
 
