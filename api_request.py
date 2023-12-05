@@ -21,3 +21,8 @@ def get_all_categories() -> list:
     for category, subcategory in request_json.items():
         categories.append(subcategory)
     return categories
+
+def get_question_by_id(id: str)
+    return make_request(f"https://the-trivia-api.com/v2/questions/{id}")
+
+
