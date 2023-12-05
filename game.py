@@ -12,7 +12,7 @@ class Game:
         self.questions_per_categories = 5
         self.num_categories = 5
 
-    def get_random_category(self) -> str:
+    def get_random_category_name(self) -> str:
         """
         Gets a random category from all_possible_categories.
         :return: A random category out of all_possible_categories.
@@ -28,7 +28,7 @@ class Game:
         """
         for category_name in category_names:
             if category_name == "random":
-                random_category = self.get_random_category()
+                random_category = self.get_random_category_name()
                 self.categories.append(Category(random_category))
                 self.all_possible_categories.remove(random_category)
             else:
@@ -37,6 +37,10 @@ class Game:
 
     def generate_board_html(self) -> str:
         table_html = ""
+        header_html = ""
+        for category in self.categories:
+            header_html += f"<th>{category.name}</th>"
+        table_html += f"<tr>{header_html}</tr>"
         for i in range(len(self.categories[0].questions)):
             row_html = ""
             for category in self.categories:

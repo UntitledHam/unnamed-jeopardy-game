@@ -2,6 +2,7 @@ import unittest
 from category import Category
 from question import Question
 
+
 class TestCategory(unittest.TestCase):
     def test_category(self):
         category = Category("music")
@@ -14,6 +15,12 @@ class TestCategory(unittest.TestCase):
         category = Category("music")
         for i in range(100, 600, 100):
             self.assertEquals(category.get_question_by_point_val(i).get_point_val(), i)
+
+    def test_set_questions(self):
+        category = Category("music")
+        category.set_questions()
+        for question in category.questions:
+            print(question.question_text)
 
 
 
