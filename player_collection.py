@@ -19,3 +19,17 @@ class PlayerCollection:
         :post: Players are sorted by score (High to Low).
         """
         self.players.sort(key=lambda p: p.score, reverse=True)
+
+    def generate_leaderboard_html(self):
+        """
+        Generates the HTML for displaying the leaderboard.
+        :post: Sorts the players.
+        :return: The HTML of the leaderboard.
+        """
+        self.sort_players()
+        leaderboard_html = ""
+        for i in range(len(self.players)):
+            leaderboard_html += f"{i+1}: {self.players[i].name}: {self.players[i].score}<br>"
+
+        return f"""Leaderboard:<br>{leaderboard_html}<br>"""
+
