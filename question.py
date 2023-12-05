@@ -3,7 +3,7 @@ from random import shuffle
 class Question:
     def __init__(self, question_json: dict, point_val):
         self.question_json = question_json
-        self.id: int = question_json["id"]
+        self.id: str = question_json["id"]
         self.correct_answer: str = question_json["correctAnswer"]
         self.answers: list = question_json["incorrectAnswers"] + [self.correct_answer]
         shuffle(self.answers)
