@@ -8,7 +8,7 @@ class Category:
         self.done_questions = []
 
     def set_questions(self):
-        ### Selects 5 random questions to add to the category: 1 easy, 2 med, 2 hard, with varying point vals
+        # Selects 5 random questions to add to the category: 1 easy, 2 med, 2 hard, with varying point vals
         questions = []
         ten_easy = api_request.get_questions_for_specific_category_by_difficulty(self.name, "easy")
         questions.append(Question(ten_easy[0], 100))

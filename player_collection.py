@@ -13,6 +13,17 @@ class PlayerCollection:
         """
         self.players.append(Player(name))
 
+    def find_player_by_name(self, name: str) -> Player:
+        """
+        Searches for the player of the matching name.
+        :param name: The name to search for.
+        :return: Player object that matches the given name.
+        """
+        for player in self.players:
+            if player.name == name:
+                return player
+        raise ValueError("Player not found.")
+
     def sort_players(self):
         """
         Sorts players by their score for the leader board.
@@ -20,7 +31,7 @@ class PlayerCollection:
         """
         self.players.sort(key=lambda p: p.score, reverse=True)
 
-    def generate_leaderboard_html(self):
+    def generate_leaderboard_html(self) -> str:
         """
         Generates the HTML for displaying the leaderboard.
         :post: Sorts the players.
@@ -31,5 +42,5 @@ class PlayerCollection:
         for i in range(len(self.players)):
             leaderboard_html += f"{i+1}: {self.players[i].name}: {self.players[i].score}<br>"
 
-        return f"""Leaderboard:<br>{leaderboard_html}<br>"""
+        return f"""<h1>Leaderboard:</h1>{leaderboard_html}<br>"""
 
