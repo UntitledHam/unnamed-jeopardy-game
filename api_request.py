@@ -23,6 +23,6 @@ def get_all_categories() -> list:
     return categories
 
 def get_question_by_id(id: str)
-    return make_request(f"https://the-trivia-api.com/v2/questions/{id}")
+    return make_request(f"https://the-trivia-api.com/v2/question/{id}")
 
 
