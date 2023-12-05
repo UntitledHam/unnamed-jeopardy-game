@@ -22,6 +22,21 @@ class TestCategory(unittest.TestCase):
         for question in category.questions:
             print(question.question_text)
 
+    def test_question_done(self):
+        category = Category("music")
+        category.question_done(category.get_question_by_point_val(100))
+        self.assertTrue(category.done_questions.__contains__(category.get_question_by_point_val(100)))
+        self.assertFalse(category.done_questions.__contains__(category.get_question_by_point_val(200)))
+
+    def test_done_point_vals(self):
+        category = Category("music")
+        category.question_done(category.get_question_by_point_val(100))
+        self.assertTrue(category.find_done_point_vals(), [100])
+        category.question_done(category.get_question_by_point_val(200))
+        self.assertTrue(category.find_done_point_vals(), [100, 200])
+
+
+
 
 
 
