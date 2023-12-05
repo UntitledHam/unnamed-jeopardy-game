@@ -1,5 +1,5 @@
 from player_collection import PlayerCollection
-from api_request import get_questions_for_specific_category_by_difficulty, get_all_categories
+from api_request import get_questions_for_specific_category_by_difficulty, get_all_category_names
 from random import choice
 from category import Category
 
@@ -7,7 +7,7 @@ from category import Category
 class Game:
     def __init__(self):
         self.players = PlayerCollection()
-        self.all_possible_categories = get_all_categories()
+        self.all_possible_categories = get_all_category_names()
         self.categories = []
         self.questions_per_categories = 5
         self.num_categories = 5
@@ -28,12 +28,19 @@ class Game:
         """
         for category_name in category_names:
             if category_name == "random":
-                self.categories.append(Category(self.get_random_category()))
-                self.all_possible_categories.remove(category_name)
+                random_category = self.get_random_category()
+                self.categories.append(Category(random_category))
+                self.all_possible_categories.remove(random_category)
             else:
                 self.categories.append(Category(category_name))
                 self.all_possible_categories.remove(category_name)
 
     def generate_board_html(self) -> str:
-        html = ""
-        return html
+        table_html = ""
+        for i in range(len(self.categories[0].questions)):
+            row_html = ""
+            for category in self.categories:
+                row_html += f"<th>{category.questions[i].point_val}</th>"
+            table_html += f"<tr>{row_html}</tr>"
+        
+        return f""" <table>{table_html}</table>"""

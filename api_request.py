@@ -15,14 +15,14 @@ def get_questions_for_specific_category_by_difficulty(category: str, difficulty:
     return make_request(f"https://the-trivia-api.com/v2/questions?categories={category}&type=text-choice&difficulties={difficulty}")
 
 
-def get_all_categories() -> list:
+def get_all_category_names() -> list:
     categories = []
     request_json = make_request(f"https://the-trivia-api.com/v2/categories")
     for category, subcategory in request_json.items():
-        categories.append(subcategory)
+        categories.extend(subcategory)
     return categories
 
-def get_question_by_id(id: str)
+def get_question_by_id(id: str):
     return make_request(f"https://the-trivia-api.com/v2/question/{id}")
 
 

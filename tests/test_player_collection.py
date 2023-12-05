@@ -3,7 +3,7 @@ from player_collection import PlayerCollection
 from random import randint
 
 
-class TestStringMethods(unittest.TestCase):
+class TestPlayerCollection(unittest.TestCase):
     def test_player_collection(self):
         players = PlayerCollection()
         player_names = ["Jimbo", "Jeff", "Abe", "Andrew", "Scott"]

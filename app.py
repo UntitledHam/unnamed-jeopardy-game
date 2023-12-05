@@ -8,6 +8,8 @@ test_players = {"Jeff": 100, "Jimbo": 500, "Scott": 1000, "Abe": 5000, "Andrew":
 for name, score in test_players.items():
     game.players.add_player(name)
     game.players.find_player_by_name(name).score = score
+    category_names = ["random", "random", "random", "random", "random"]
+    game.generate_categories(category_names)
 
 
 
@@ -22,6 +24,9 @@ def home():
     </head>
     <body>
         {game.players.generate_leaderboard_html()}
+        <br>
+        {game.generate_board_html()}
+        
     </body>
     </html>
     """
