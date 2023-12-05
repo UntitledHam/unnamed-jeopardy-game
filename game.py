@@ -35,45 +35,9 @@ class Game:
                 self.categories.append(Category(category_name))
                 self.all_possible_categories.remove(category_name)
 
-    def generate_board_html_back_up(self) -> str:
-        table_html = ""
-        header_html = ""
-        for category in self.categories:
-            header_html += f"<th>{category.name}</th>"
-        table_html += f"<tr>{header_html}</tr>"
-        for i in range(len(self.categories[0].questions)):
-            row_html = ""
-            for category in self.categories:
-                row_html += f"<th>{category.questions[i].point_val}</th>"
-            table_html += f"<tr>{row_html}</tr>"
-        
-        return f""" <table>{table_html}</table>"""
-
     def generate_board_html(self) -> str:
-        return f"""<div class="box"><div class="container">
-  <div>100</div>
-  <div>200</div>
-  <div>300</div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-</div></div>"""
+        html = """<div class="box"><div class="container">"""
+        for i in range(len(self.categories[0].questions)):
+            for category in self.categories:
+                html += f"<div><p>{category.questions[i].get_point_val()}</p></div>"
+        return f"""{html}</div></div>"""

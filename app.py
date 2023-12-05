@@ -4,6 +4,14 @@ from game import Game
 app = Flask(__name__)
 game = Game()
 
+test_players = {"Jeff": 100, "Jimbo": 500, "Scott": 1000, "Abe": 5000, "Andrew": 3500}
+for name, score in test_players.items():
+    game.players.add_player(name)
+    game.players.find_player_by_name(name).score = score
+category_names = ["random", "random", "random", "random", "random"]
+game.generate_categories(category_names)
+
+
 style = """ 
 
 div {
@@ -22,6 +30,8 @@ div {
   aspect-ratio: 1;
   text-align: center;
   color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 240%;
 }
 """
 
