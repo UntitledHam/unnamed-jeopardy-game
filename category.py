@@ -59,7 +59,9 @@ class Category:
         # silly underscore fiasco solved
         strip_question_one = self.name.replace("_", "")
         strip_question_two = category_two.replace("_", "")
-
+        if strip_question_two == strip_question_one:
+            return True
+        return False
 
 
 
