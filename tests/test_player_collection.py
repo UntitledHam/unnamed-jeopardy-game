@@ -4,13 +4,21 @@ from random import randint
 
 
 class TestPlayerCollection(unittest.TestCase):
-    def test_player_collection(self):
+    def test_player_collection_add_player(self):
         players = PlayerCollection()
         player_names = ["Jimbo", "Jeff", "Abe", "Andrew", "Scott"]
         for name in player_names:
             players.add_player(name)
         for i in range(len(players.players)):
             self.assertEquals(players.players[i].name, player_names[i])
+
+    def test_find_player_by_name(self):
+        players = PlayerCollection()
+        player_names = ["Jimbo", "Jeff", "Abe", "Andrew", "Scott"]
+        for name in player_names:
+            players.add_player(name)
+        for i in range(len(players.players)):
+            self.assertEquals(players.players[i], players.find_player_by_name(player_names[i]))
 
     def test_sort_players(self):
         players = PlayerCollection()
