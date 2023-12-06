@@ -27,7 +27,6 @@ class Game:
         for category_name in category_names:
             if category_name == "random":
                 category_name = self.get_random_category_name()
-            print(f"Test: {category_name}")
             self.categories.append(Category(category_name))
             self.all_possible_categories.remove(category_name)
         self.categories.sort(key=lambda c: c.name)
@@ -59,6 +58,7 @@ class Game:
         <p>
             {answers_html}
         </p>
+        {self.players.generate_leaderboard_html()}
         """
 
         return html
