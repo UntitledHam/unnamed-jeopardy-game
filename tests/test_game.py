@@ -12,6 +12,14 @@ class TestGame(unittest.TestCase):
         category_names = ["random", "random", "random", "random", "random"]
         game.generate_categories(category_names)
 
+        #for category in game.categories:
+            #print(category.name)
+
+
+        print("The Second Part:")
+        category_names = ["music", "film", "science", "geography", "history"]
+        game.generate_categories(category_names)
+
         for category in game.categories:
             print(category.name)
 
