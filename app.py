@@ -17,6 +17,9 @@ style = """
 body {
     background-color: #301e83;
 }
+a {
+    color: yellow;
+}
 
 div {
     width: 70%;

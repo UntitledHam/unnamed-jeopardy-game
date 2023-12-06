@@ -24,3 +24,10 @@ class TestApiRequest(unittest.TestCase):
         for question in easy_questions:
             self.assertEquals(question.difficulty, "easy")
             self.assertEquals(question.category, "music")
+
+
+    def test_replace(self):
+        starting_string = "general_knowledge"
+        starting_string = starting_string.replace("_", "-")
+
+        print(starting_string)
