@@ -9,8 +9,6 @@ class Game:
         self.players = PlayerCollection()
         self.all_possible_categories = get_all_category_names()
         self.categories = []
-        self.questions_per_categories = 5
-        self.num_categories = 5
 
     def get_random_category_name(self) -> str:
         """
@@ -24,16 +22,16 @@ class Game:
         """
         Generates the categories to be used for the game.
         :param category_names: A list of the category names, if the value is "random" it will choose a random category.
-        :post: Categories will be a list of Category objects.
+        :post: Categories will be a list of Category objects, sorted Alphabetically.
         """
         for category_name in category_names:
             if category_name == "random":
-                random_category = self.get_random_category_name()
-                self.categories.append(Category(random_category))
-                self.all_possible_categories.remove(random_category)
-            else:
-                self.categories.append(Category(category_name))
-                self.all_possible_categories.remove(category_name)
+                category_name = self.get_random_category_name()
+            print(f"Test: {category_name}")
+            self.categories.append(Category(category_name))
+            self.all_possible_categories.remove(category_name)
+        self.categories.sort(key=lambda c: c.name)
+        self.all_possible_categories = get_all_category_names()
 
     def generate_board_html(self) -> str:
         html = """<div class="box"><div class="container">"""
@@ -41,3 +39,26 @@ class Game:
             for category in self.categories:
                 html += f"<div><p>{category.questions[i].get_point_val()}</p></div>"
         return f"""{html}</div></div>"""
+
+    def ask_question(self, category_name: str, point_value: int):
+        category = None
+        for the_category in self.categories:
+            if the_category.name == category_name:
+                category = the_category
+                break
+        question = category.get_question_by_point_val(point_value)
+        letters = ["A", "B", "C", "D"]
+        answers_html = ""
+        for i in range(len(question.answers)):
+            answers_html += f"{letters[i]}: {question.answers[i]}<br>"
+
+        html = f"""
+        <h1>
+            {question.question_text}
+        </h1>
+        <p>
+            {answers_html}
+        </p>
+        """
+
+        return html

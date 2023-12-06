@@ -42,7 +42,6 @@ class Category:
                 return self.questions[middle_index]
         raise ValueError("Value is not in the list.")
 
-
     def find_done_point_vals(self):
         ### returns list of point vals that are in self.done_questions
         done_point_vals = []
