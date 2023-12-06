@@ -14,6 +14,10 @@ game.generate_categories(category_names)
 
 style = """ 
 
+body {
+    background-color: #301e83;
+}
+
 div {
     width: 70%;
     height: 70%;
@@ -24,6 +28,7 @@ div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 5px;
+  background-color: #000387;
 }
 .container div {
   background-color: blue;
@@ -32,6 +37,7 @@ div {
   color: white;
   font-family: "Times New Roman", Times, serif;
   font-size: 240%;
+  border: 1px white solid;
 }
 """
 
@@ -50,7 +56,7 @@ def home():
     </head>
     <body>
         <br>
-        {game.ask_question("music", 500)}
+        {game.generate_board_html()}
         
     </body>
     </html>
