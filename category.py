@@ -11,6 +11,7 @@ class Category:
 
     def set_questions(self):
         # Selects 5 random questions to add to the category: 1 easy, 2 med, 2 hard, with varying point vals
+        # helper method
         questions = []
         difficulties = ["easy", "medium", "hard"]
         point_value = 100
@@ -43,7 +44,6 @@ class Category:
         raise ValueError("Value is not in the list.")
 
     def find_done_point_vals(self):
-        ### returns list of point vals that are in self.done_questions
         done_point_vals = []
         for question in self.done_questions:
             done_point_vals.append(question.get_point_val())
@@ -54,6 +54,10 @@ class Category:
             if question.get_id() == given_question.get_id():
                 self.done_questions.append(question)
                 break
+
+
+
+
 
 
 
