@@ -29,5 +29,4 @@ class TestApiRequest(unittest.TestCase):
     def test_replace(self):
         starting_string = "general_knowledge"
         starting_string = starting_string.replace("_", "-")
-
-        print(starting_string)
+        self.assertEquals("general-knowledge", starting_string)
