@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from game import Game
 
 app = Flask(__name__)
@@ -59,5 +59,16 @@ def home():
     return html
 
 
+@app.route("/ask-question")
+def ask_question():
+    category_name = request.args.get("category", "")
+    point_value = int(request.args.get("point-value", ""))
+    html = ""
+    try:
+        html += f"{game.ask_question(category_name, point_value)}"
+    except ValueError:
+        return "<h1>Invalid Question</h1>"
+
+    return html
 if __name__ == "__main__":
     app.run("localhost", debug=True)
