@@ -55,6 +55,10 @@ class Category:
                 self.done_questions.append(question)
                 break
 
+    def compare(self, category_two):
+        # silly underscore fiasco solved
+        strip_question_one = self.name.replace("_", "")
+        strip_question_two = category_two.replace("_", "")
 
 
 
