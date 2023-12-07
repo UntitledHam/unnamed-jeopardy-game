@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 from game import Game
 
 app = Flask(__name__)
@@ -10,6 +10,8 @@ for name, score in test_players.items():
     game.players.find_player_by_name(name).score = score
 category_names = ["food_and_drink", "music", "geography", "random", "random"]
 game.generate_categories(category_names)
+done_question = game.categories[0].get_question_by_point_val(300)
+game.categories[0].done_questions.append(done_question)
 
 
 with open("board-style.css", "r") as f:
@@ -21,6 +23,7 @@ with open("question-style.css", "r") as f:
 
 @app.route("/")
 def home():
+
     html = f"""
     <!DOCTYPE html>
     <html>
@@ -37,6 +40,9 @@ def home():
     </body>
     </html>
     """
+
+    if game.check_if_all_questions_are_answered():
+        return redirect("/win-screen")
 
     return html
 
@@ -65,5 +71,27 @@ def ask_question():
         </html>
         """
     return html
+
+
+@app.route("/win-screen")
+def win_screen():
+    html = f"""
+    <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Unnamed Jeopardy Game</title>
+            <style>
+            </style>
+        </head>
+        <body>
+            <h1>
+                You Won!
+            </h1>
+        </body>
+        </html>
+    """
+
+    return html
+
 if __name__ == "__main__":
     app.run("localhost", debug=True)

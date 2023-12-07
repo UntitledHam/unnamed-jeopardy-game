@@ -18,12 +18,22 @@ class Game:
         category = choice(self.all_possible_categories)
         return category
 
+    def check_if_all_questions_are_answered(self):
+        num_done_questions = 0
+        for category in self.categories:
+            num_done_questions += len(category.done_questions)
+
+        if num_done_questions >= 25:
+            return True
+        return False;
+
     def generate_categories(self, category_names: list):
         """
         Generates the categories to be used for the game.
         :param category_names: A list of the category names, if the value is "random" it will choose a random category.
         :post: Categories will be a list of Category objects, sorted Alphabetically.
         """
+        self.categories = []
         amount_of_random_categories = category_names.count("random")
         filtered_names = filter(lambda n: n != "random", category_names)
         for category_name in filtered_names:
@@ -43,12 +53,18 @@ class Game:
             html += f"""<div>{modified_category_name}</div>"""
         for i in range(len(self.categories[0].questions)):
             for category in self.categories:
+                if category.questions[i] in category.done_questions:
+                    link_html = "<br>"
+                else:
+                    link_html = f"""
+                    <a href=/ask-question?category={category.questions[i].category}&point-value={str(category.questions[i].point_val)}>
+                        {str(category.questions[i].point_val)}
+                    </a>
+                    """
                 html += f"""
                 <div>
                     <p>
-                        <a href="/ask-question?category={category.questions[i].category}&point-value={str(category.questions[i].point_val)}">
-                            {category.questions[i].get_point_val()}
-                        </a>
+                        {link_html}
                     </p>
                 </div>"""
         return f"""{html}</div></div>"""
