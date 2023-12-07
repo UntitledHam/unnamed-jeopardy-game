@@ -66,13 +66,13 @@ class Game:
             answers_html += f"{letters[i]}: {question.answers[i]}<br>"
 
         html = f"""
+        {self.players.generate_leaderboard_html()}
         <h1>
             {question.question_text}
         </h1>
         <p>
             {answers_html}
         </p>
-        {self.players.generate_leaderboard_html()}
         """
 
         return html

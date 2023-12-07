@@ -1,0 +1,39 @@
+body {
+    background-color: #301e83;
+    font-family: "Times New Roman", Times, serif;
+}
+a {
+    color: yellow;
+    font-size: min(180%);
+}
+h1 {
+    color: yellow;
+    font-size: 400%;
+    text-align: center;
+    margin-left: 25%;
+}
+p {
+    color: white;
+    font-size: 200%;
+    margin-left: 25%;
+}
+.leaderboard {
+    width: 20%;
+    height: 50%;
+    color: white;
+    position: absolute;
+    background-color: #37287f;
+    border: 4px white solid;
+    & h1 {
+        color: white;
+        margin-left: 0;
+        text-align: center;
+        font-size: 340%;
+    }
+    & p {
+        margin-left: 3%;
+        font-size: 150%;
+        color: yellow;
+    }
+
+}

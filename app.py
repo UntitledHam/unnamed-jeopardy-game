@@ -13,7 +13,10 @@ game.generate_categories(category_names)
 
 
 with open("board-style.css", "r") as f:
-    style = f.read()
+    board_style = f.read()
+
+with open("question-style.css", "r") as f:
+    question_style = f.read()
 
 
 @app.route("/")
@@ -24,7 +27,7 @@ def home():
     <head>
         <title>Unnamed Jeopardy Game</title>
         <style>
-            {style}
+            {board_style}
         </style>
     </head>
     <body>
@@ -42,12 +45,25 @@ def home():
 def ask_question():
     category_name = request.args.get("category", "")
     point_value = int(request.args.get("point-value", ""))
-    html = ""
     try:
-        html += f"{game.ask_question(category_name, point_value)}"
+        question_html = game.ask_question(category_name, point_value)
     except ValueError:
         return "<h1>Invalid Question</h1>"
 
+    html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Unnamed Jeopardy Game</title>
+            <style>
+                {question_style}
+            </style>
+        </head>
+        <body>
+            {question_html}
+        </body>
+        </html>
+        """
     return html
 if __name__ == "__main__":
     app.run("localhost", debug=True)
