@@ -9,6 +9,8 @@ from api_request import get_all_category_names
 
 
 class TestGame(unittest.TestCase):
+    # Running all tests at same time can return errors due to rate-limiting
+    # Excludes tests that return HTML as they are tested through Flask
     def test_get_random_category(self):
         game = Game()
         self.assertIs(type(game.get_random_category_name()), str)
@@ -66,4 +68,26 @@ class TestGame(unittest.TestCase):
         self.assertEquals([], game.categories)
         self.assertEquals(game.players.find_player_by_name("jeff").score, 0)
 
+    def test_check_if_all_questions_are_answered(self):
+        game = Game()
+        game.generate_categories(["random", "random", "random", "random", "random"])
+        self.assertFalse(game.check_if_all_questions_are_answered())
+        for category in game.categories:
+            for question in category.questions:
+                category.question_done(question)
+        self.assertTrue(game.check_if_all_questions_are_answered())
 
+    def test_get_question_by_category_name_and_point_value(self):
+        game = Game()
+        game.generate_categories(["music", "geography", "random", "random", "random"])
+        self.assertTrue(game.get_question_by_category_name_and_point_value("music", 100),
+                        game.get_category_from_name("music").get_question_by_point_val(100))
+        self.assertTrue(game.get_question_by_category_name_and_point_value("geography", 200),
+                        game.get_category_from_name("music").get_question_by_point_val(200))
+
+    def test_get_category_from_name(self):
+        game = Game()
+        category_names = ["music", "history", "science", "geography", "food_and_drink"]
+        game.generate_categories(category_names)
+        for i in range(5):
+            self.assertTrue(game.get_category_from_name(category_names[i]), game.categories[i])
