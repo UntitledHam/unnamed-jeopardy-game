@@ -2,6 +2,19 @@ import api_request
 from question import Question
 
 
+def make_new_questions_grouped_by_difficulty(all_questions_json):
+    questions_grouped_by_difficulty = {"easy": [], "medium": [], "hard": []}
+    for question_json in all_questions_json:
+        difficulty = question_json["difficulty"]
+        match difficulty:
+            case "easy":
+                questions_grouped_by_difficulty["easy"].append(Question(question_json, 0))
+            case "medium":
+                questions_grouped_by_difficulty["medium"].append(Question(question_json, 0))
+            case "hard":
+                questions_grouped_by_difficulty["hard"].append(Question(question_json, 0))
+
+    return questions_grouped_by_difficulty
 
 class Category:
     def __init__(self, name):
@@ -9,7 +22,7 @@ class Category:
         self.questions = self.set_questions()
         self.done_questions = []
 
-    def set_questions(self):
+    def set_questions_fallback(self):
         # Selects 5 random questions to add to the category: 1 easy, 2 med, 2 hard, with varying point vals
         # helper method
         questions = []
@@ -23,8 +36,24 @@ class Category:
                 questions.append(Question(question_json[1], point_value))
                 point_value += 100
 
-
         return questions
+
+    def set_questions(self):
+        # Selects 5 random questions to add to the category: 1 easy, 2 med, 2 hard, with varying point vals
+        # helper method
+        all_questions_json = api_request.get_questions_for_specific_category(self.name)
+        grouped_questions = make_new_questions_grouped_by_difficulty(all_questions_json)
+
+        if len(grouped_questions["easy"]) >= 1 and len(grouped_questions["medium"]) >= 2 and len(grouped_questions["hard"]) >= 2:
+            questions = [grouped_questions["easy"][0]] + grouped_questions["medium"][0:2] + grouped_questions["hard"][0:2]
+            points = 100
+            for question in questions:
+                question.point_val = points
+                points += 100
+            return questions
+
+        return self.set_questions_fallback()
+
 
     def get_question_by_point_val(self, point_value):
         ### returns questions based on point value, returns valerror if no question is found

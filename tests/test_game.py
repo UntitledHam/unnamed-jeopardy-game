@@ -16,11 +16,19 @@ class TestGame(unittest.TestCase):
             self.assertEquals(game.categories[i].name, category_names[i])
 
     def test_generate_random_categories(self):
+        game = Game()
+        random_category_names = ["random", "random", "random", "random", "random"]
+        game.generate_categories(random_category_names)
+        for category in game.categories:
+            self.assertIs(type(category), Category)
+            self.assertEquals(game.categories.count(category), 1)
+            print(category.name)
         second_game = Game()
         random_category_names = ["random", "random", "music", "random", "random"]
         second_game.generate_categories(random_category_names)
         for category in second_game.categories:
             self.assertIs(type(category), Category)
+            self.assertEquals(second_game.categories.count(category), 1)
             print(category.name)
 
 
