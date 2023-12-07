@@ -5,6 +5,7 @@ class PlayerCollection:
     def __init__(self):
         self.players = []
         self.alphabetical_players = []
+        self.current_player_turn = None
 
     def add_player(self, name: str):
         """
@@ -16,6 +17,19 @@ class PlayerCollection:
         self.players.append(player)
         self.alphabetical_players.append(player)
         self.alphabetical_players.sort(key=lambda p: p.name)
+
+    def next_turn(self):
+        skip = False
+        if self.current_player_turn is None:
+            self.current_player_turn = self.alphabetical_players[0]
+            skip = True
+        player_index = self.alphabetical_players.index(self.current_player_turn)
+        if player_index < len(self.alphabetical_players) - 1 and not skip:
+            player_index += 1
+        else:
+            player_index = 0
+
+        self.current_player_turn = self.alphabetical_players[player_index]
 
     def find_player_by_name(self, name: str) -> Player:
         """
@@ -63,5 +77,8 @@ class PlayerCollection:
         <p>
             {leaderboard_html}
         </p>
+        <h1>
+            Turn: {self.current_player_turn.name}
+        </h1>
         </div>"""
 

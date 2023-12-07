@@ -30,7 +30,7 @@ def home():
 
 @app.route("/board")
 def board():
-
+    game.players.next_turn()
     html = f"""
     <!DOCTYPE html>
     <html>
