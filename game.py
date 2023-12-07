@@ -62,3 +62,15 @@ class Game:
         """
 
         return html
+
+    def check_answer(self, category, point_value, letter_answer):
+        if letter_answer not in ["A", "B", "C", "D"]:
+            raise ValueError("invalid answer letter")
+        question = category.get_question_by_point_val(point_value)
+        answer_index = {"A": 0, "B": 1, "C": 2, "D": 3}
+        answer = question.answers[answer_index.get(letter_answer)]
+        if answer == question.correct_answer:
+            return True
+        else:
+            return False
+
