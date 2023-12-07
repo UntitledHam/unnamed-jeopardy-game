@@ -5,7 +5,7 @@ from question import Question
 
 class Category:
     def __init__(self, name):
-        self.name = name.replace("_", "-")
+        self.name = name
         self.questions = self.set_questions()
         self.done_questions = []
 
