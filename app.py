@@ -39,7 +39,7 @@ div {
   text-align: center;
   color: white;
   font-family: "Times New Roman", Times, serif;
-  font-size: 240%;
+  font-size: min(240%);
   border: 1px white solid;
 }
 """

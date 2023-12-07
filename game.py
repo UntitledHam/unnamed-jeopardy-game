@@ -38,6 +38,9 @@ class Game:
 
     def generate_board_html(self) -> str:
         html = """<div class="box"><div class="container">"""
+        for category in self.categories:
+            modified_category_name = category.name.replace("_", "<br>").title()
+            html += f"""<div>{modified_category_name}</div>"""
         for i in range(len(self.categories[0].questions)):
             for category in self.categories:
                 html += f"""

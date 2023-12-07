@@ -25,7 +25,7 @@ def get_all_category_names() -> list:
     categories = []
     request_json = make_request(f"https://the-trivia-api.com/v2/categories")
     for category, subcategory in request_json.items():
-        categories.extend(subcategory)
+        categories.append(subcategory[0])
     return categories
 
 
