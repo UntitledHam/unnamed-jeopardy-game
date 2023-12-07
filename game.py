@@ -136,6 +136,6 @@ class Game:
             {answers_html}
         </p>
         {buttons_html}
-\        """
+       """
 
         return html

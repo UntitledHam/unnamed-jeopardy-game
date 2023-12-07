@@ -14,13 +14,13 @@ done_question = game.categories[0].get_question_by_point_val(300)
 game.categories[0].done_questions.append(done_question)
 
 
-with open("board-style.css", "r") as f:
+with open("styles/board-style.css", "r") as f:
     board_style = f.read()
 
-with open("question-style.css", "r") as f:
+with open("styles/question-style.css", "r") as f:
     question_style = f.read()
 
-with open("win_screen_style.css", "r") as f:
+with open("styles/win_screen_style.css", "r") as f:
     win_screen_style = f.read()
 
 
