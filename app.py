@@ -24,10 +24,12 @@ with open("win_screen_style.css", "r") as f:
     win_screen_style = f.read()
 
 
-
-
 @app.route("/")
 def home():
+    return "Make options to choose categories and add players here."
+
+@app.route("/board")
+def board():
 
     html = f"""
     <!DOCTYPE html>
