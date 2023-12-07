@@ -11,6 +11,11 @@ class Game:
         self.all_possible_categories = get_all_category_names()
         self.categories = []
 
+    def reset(self):
+        self.categories = []
+        self.all_possible_categories = get_all_category_names()
+        self.players.reset_all_players_score()
+
     def get_random_category_name(self) -> str:
         """
         Gets a random category from all_possible_categories.

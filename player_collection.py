@@ -13,10 +13,22 @@ class PlayerCollection:
         :param name: Name of the player to add.
         :post: players will have another player.
         """
+        player_names = list(map(lambda p: p.name, self.players))
+        if name in player_names:
+            raise ValueError("Player Already Exists.")
         player = Player(name)
+        if len(self.players) >= 4:
+            raise ValueError("Cannot have more than 4 players.")
         self.players.append(player)
         self.alphabetical_players.append(player)
         self.alphabetical_players.sort(key=lambda p: p.name)
+
+    def remove_player(self, player_name):
+        self.players.remove(self.find_player_by_name(player_name))
+
+    def reset_all_players_score(self):
+        for player in self.players:
+            player.score = 0
 
     def next_turn(self):
         skip = False
@@ -57,6 +69,18 @@ class PlayerCollection:
         """
         self.sort_players()
         return self.players[0]
+
+    def generate_player_list_html(self):
+        output = ""
+        for i in range(len(self.players)):
+            output += f"""<p>{i+1}: {self.players[i].name}
+            <a href="/remove-player?player-name={self.players[i].name}">
+                remove
+            </a>
+            </p>
+            """
+
+        return output
 
     def generate_leaderboard_html(self) -> str:
         """
