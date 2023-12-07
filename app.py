@@ -20,6 +20,11 @@ with open("board-style.css", "r") as f:
 with open("question-style.css", "r") as f:
     question_style = f.read()
 
+with open("win_screen_style.css", "r") as f:
+    win_screen_style = f.read()
+
+
+
 
 @app.route("/")
 def home():
@@ -75,18 +80,27 @@ def ask_question():
 
 @app.route("/win-screen")
 def win_screen():
+    top_player = game.players.get_top_player()
     html = f"""
     <!DOCTYPE html>
         <html>
         <head>
             <title>Unnamed Jeopardy Game</title>
             <style>
+                {win_screen_style}
             </style>
         </head>
         <body>
             <h1>
-                You Won!
+                Congratulations {top_player.name}, You Won!
             </h1>
+            <p>
+                You had a total of {top_player.score} points.
+                <br><br>
+                <a href="/">
+                    Play Again
+                </a>
+            </p>
         </body>
         </html>
     """

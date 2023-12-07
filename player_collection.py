@@ -31,6 +31,15 @@ class PlayerCollection:
         """
         self.players.sort(key=lambda p: p.score, reverse=True)
 
+    def get_top_player(self):
+        """
+        Returns the object of the top player.
+        :post: Sorts the players.
+        :return: The object of the top player.
+        """
+        self.sort_players()
+        return self.players[0]
+
     def generate_leaderboard_html(self) -> str:
         """
         Generates the HTML for displaying the leaderboard.
