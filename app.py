@@ -8,7 +8,7 @@ test_players = {"Jeff": 100, "Jimbo": 500, "Scott": 1000, "Abe": 5000, "Andrew":
 for name, score in test_players.items():
     game.players.add_player(name)
     game.players.find_player_by_name(name).score = score
-category_names = ["food_and_drink", "music", "random", "random", "random"]
+category_names = ["food_and_drink", "music", "geography", "random", "random"]
 game.generate_categories(category_names)
 
 
@@ -16,22 +16,40 @@ style = """
 
 body {
     background-color: #301e83;
+    font-family: "Times New Roman", Times, serif;
 }
 a {
     color: yellow;
+    font-size: min(180%);
+}
+.leaderboard {
+    width: 20%;
+    height: 50%;
+    color: white;
+    position: absolute;
+    background-color: #37287f;
+    border: 4px white solid;
+    h1 {
+        text-align: center;
+        font-size: 340%;
+    }
+    p {
+        font-size: 150%;
+        color: yellow;
+    }
+    
 }
 
 div {
     width: 65%;
     height: 65%;
     padding: 20px;
-    margin: auto;
 }
 .container {
+  margin-left: 45%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 5px;
-  background-color: #000387;
 }
 .container div {
   background-color: blue;
@@ -39,7 +57,7 @@ div {
   text-align: center;
   color: white;
   font-family: "Times New Roman", Times, serif;
-  font-size: min(160%);
+  font-size: min(150%);
   border: 1px white solid;
 }
 """
@@ -58,7 +76,7 @@ def home():
         </style>
     </head>
     <body>
-        <br>
+        {game.players.generate_leaderboard_html()}
         {game.generate_board_html()}
         
     </body>

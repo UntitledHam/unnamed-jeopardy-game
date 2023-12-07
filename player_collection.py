@@ -42,5 +42,13 @@ class PlayerCollection:
         for i in range(len(self.players)):
             leaderboard_html += f"{i+1}: {self.players[i].name}: {self.players[i].score}<br>"
 
-        return f"""<h1>Leaderboard:</h1>{leaderboard_html}<br>"""
+        return f"""
+        <div class="leaderboard">
+        <h1>
+            Leaderboard:
+        </h1>
+        <p>
+            {leaderboard_html}
+        </p>
+        </div>"""
 
