@@ -8,7 +8,7 @@ test_players = {"Jeff": 100, "Jimbo": 500, "Scott": 1000, "Abe": 5000, "Andrew":
 for name, score in test_players.items():
     game.players.add_player(name)
     game.players.find_player_by_name(name).score = score
-category_names = ["food_and_drink", "random", "random", "random", "random"]
+category_names = ["food_and_drink", "music", "random", "random", "random"]
 game.generate_categories(category_names)
 
 
@@ -71,7 +71,6 @@ def home():
 @app.route("/ask-question")
 def ask_question():
     category_name = request.args.get("category", "")
-    category_name = category_name.replace("-", "_")
     point_value = int(request.args.get("point-value", ""))
     html = ""
     try:

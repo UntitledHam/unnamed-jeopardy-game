@@ -42,7 +42,7 @@ class Game:
     def ask_question(self, category_name: str, point_value: int):
         category = None
         for the_category in self.categories:
-            if the_category.name == category_name:
+            if the_category.compare(category_name):
                 category = the_category
                 break
         question = category.get_question_by_point_val(point_value)
