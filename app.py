@@ -22,8 +22,8 @@ a {
 }
 
 div {
-    width: 70%;
-    height: 70%;
+    width: 65%;
+    height: 65%;
     padding: 20px;
     margin: auto;
 }
@@ -39,7 +39,7 @@ div {
   text-align: center;
   color: white;
   font-family: "Times New Roman", Times, serif;
-  font-size: min(240%);
+  font-size: min(160%);
   border: 1px white solid;
 }
 """
