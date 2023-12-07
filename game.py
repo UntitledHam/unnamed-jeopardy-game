@@ -66,6 +66,13 @@ class Game:
         return html
 
     def check_answer(self, category, point_value, letter_answer):
+        """
+        Checks letter answer for a question from its category and point value
+        :param category: Category to find question from
+        :param point_value: Point value of question
+        :param letter_answer: Letter answer that corresponds with each answer
+        :return True if answer is correct, False if incorrect
+        """
         if letter_answer not in ["A", "B", "C", "D"]:
             raise ValueError("invalid answer letter")
         question = category.get_question_by_point_val(point_value)
