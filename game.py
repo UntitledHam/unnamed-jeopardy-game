@@ -19,6 +19,13 @@ class Game:
         category = choice(self.all_possible_categories)
         return category
 
+    def get_category_from_name(self, category_name):
+        for category in self.categories:
+            if category.name == category_name:
+                return category
+
+        raise ValueError("Category not found.")
+
     def check_if_all_questions_are_answered(self):
         num_done_questions = 0
         for category in self.categories:
@@ -147,9 +154,13 @@ class Game:
 
     def answer_question(self, category_name, point_value, player_name, answer):
         question = self.get_question_by_category_name_and_point_value(category_name, point_value)
+        category = self.get_category_from_name(category_name)
+        player = self.players.find_player_by_name(player_name)
+        category.done_questions.append(question)
         correct_html = "Correct!"
         incorrect_html = "Incorrect!"
         if question.answers[answer] == question.correct_answer:
+            player.change_score(point_value)
             return correct_html
         else:
             return incorrect_html
