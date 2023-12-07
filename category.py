@@ -16,6 +16,7 @@ def make_new_questions_grouped_by_difficulty(all_questions_json):
 
     return questions_grouped_by_difficulty
 
+
 class Category:
     def __init__(self, name):
         self.name = name

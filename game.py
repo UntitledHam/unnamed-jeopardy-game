@@ -58,6 +58,7 @@ class Game:
             category_name = self.get_random_category_name()
             self.categories.append(Category(category_name))
             self.all_possible_categories.remove(category_name)
+        self.categories.sort(key=lambda c: c.name)
         self.all_possible_categories = get_all_category_names()
 
     def generate_question_buttons(self, question):

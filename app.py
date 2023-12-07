@@ -49,13 +49,23 @@ def home():
                 </label>
                 <input type='submit' value="Create Player">
             </form>
-            <form action="/set_categories" method="post">
+            <form action="/set-categories" method="post">
                 {generate_category_dropdowns()}
+                <input type='submit' value="Select Categories">
             </form> 
         </body>
     </html>
     """
     return html
+
+
+@app.route("/set-categories", methods=["POST"])
+def set_categories():
+    categories = []
+    for i in range(5):
+        categories.append(request.form.get(f"option-{i}", "random"))
+    game.generate_categories(categories)
+    return redirect("/board")
 
 
 @app.route("/board")
