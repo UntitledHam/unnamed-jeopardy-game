@@ -86,7 +86,23 @@ def answer_question():
     point_value = int(request.args.get("point-value", "0"))
     player_name = request.args.get("player", "")
     answer = int(request.args.get("answer", "0"))
-    return game.answer_question(category_name, point_value, player_name, answer)
+    response_html = game.answer_question(category_name, point_value, player_name, answer)
+    html = f"""
+    <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Unnamed Jeopardy Game</title>
+            <style>
+                {win_screen_style}
+            </style>
+        </head>
+        <body>
+            {response_html}
+        </body>
+        </html>
+    """
+
+    return html
 
 
 @app.route("/win-screen")

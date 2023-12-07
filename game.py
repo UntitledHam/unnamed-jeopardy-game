@@ -157,8 +157,22 @@ class Game:
         category = self.get_category_from_name(category_name)
         player = self.players.find_player_by_name(player_name)
         category.done_questions.append(question)
-        correct_html = "Correct!"
-        incorrect_html = "Incorrect!"
+        correct_html = f"""
+            <h1>Correct!</h1>
+            <p>The answer was: {question.correct_answer}</p>
+            <br><br>
+            <a href="/board">
+                Back to board.
+            </a>
+        """
+        incorrect_html = f"""
+            <h1>Incorrect!</h1>
+            <p>The answer was: {question.correct_answer}</p>
+            <br><br>
+            <a href="/board">
+                Back to board.
+            </a>
+        """
         if question.answers[answer] == question.correct_answer:
             player.change_score(point_value)
             return correct_html
