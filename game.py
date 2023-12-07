@@ -24,27 +24,36 @@ class Game:
         :param category_names: A list of the category names, if the value is "random" it will choose a random category.
         :post: Categories will be a list of Category objects, sorted Alphabetically.
         """
-        for category_name in category_names:
-            if category_name == "random":
-                category_name = self.get_random_category_name()
+        amount_of_random_categories = category_names.count("random")
+        filtered_names = filter(lambda n: n != "random", category_names)
+        for category_name in filtered_names:
             self.categories.append(Category(category_name))
             self.all_possible_categories.remove(category_name)
-        self.categories.sort(key=lambda c: c.name)
+
+        for i in range(amount_of_random_categories):
+            category_name = self.get_random_category_name()
+            self.categories.append(Category(category_name))
+            self.all_possible_categories.remove(category_name)
         self.all_possible_categories = get_all_category_names()
 
     def generate_board_html(self) -> str:
         html = """<div class="box"><div class="container">"""
         for i in range(len(self.categories[0].questions)):
             for category in self.categories:
-                point_val = category.questions[i].get_point_val()
-                html += (f"<div><p><a href='/ask-question?category={category.name}&point-value={point_val}'>{point_val}"
-                         f"</a>""</p></div>")
+                html += f"""
+                <div>
+                    <p>
+                        <a href="/ask-question?category={category.questions[i].category}&point-value={str(category.questions[i].point_val)}">
+                            {category.questions[i].get_point_val()}
+                        </a>
+                    </p>
+                </div>"""
         return f"""{html}</div></div>"""
 
     def ask_question(self, category_name: str, point_value: int):
         category = None
         for the_category in self.categories:
-            if the_category.compare(category_name):
+            if the_category.name == category_name:
                 category = the_category
                 break
         question = category.get_question_by_point_val(point_value)
@@ -64,22 +73,3 @@ class Game:
         """
 
         return html
-
-    def check_answer(self, category, point_value, letter_answer):
-        """
-        Checks letter answer for a question from its category and point value
-        :param category: Category to find question from
-        :param point_value: Point value of question
-        :param letter_answer: Letter answer that corresponds with each answer
-        :return True if answer is correct, False if incorrect
-        """
-        if letter_answer not in ["A", "B", "C", "D"]:
-            raise ValueError("invalid answer letter")
-        question = category.get_question_by_point_val(point_value)
-        answer_index = {"A": 0, "B": 1, "C": 2, "D": 3}
-        answer = question.answers[answer_index.get(letter_answer)]
-        if answer == question.correct_answer:
-            return True
-        else:
-            return False
-
