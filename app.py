@@ -26,6 +26,7 @@ def home():
     <html>
         <head>
             <style>
+                {win_screen_style}
             </style>
             <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         </head>
@@ -51,7 +52,9 @@ def home():
             </form>
             <form action="/set-categories" method="post">
                 {generate_category_dropdowns()}
-                <input type='submit' value="Select Categories">
+                <br>
+                <br>
+                <input type='submit' value="Play">
             </form> 
         </body>
     </html>
