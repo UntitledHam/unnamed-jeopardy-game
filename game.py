@@ -36,7 +36,9 @@ class Game:
         html = """<div class="box"><div class="container">"""
         for i in range(len(self.categories[0].questions)):
             for category in self.categories:
-                html += f"<div><p>{category.questions[i].get_point_val()}</p></div>"
+                point_val = category.questions[i].get_point_val()
+                html += (f"<div><p><a href='/ask-question?category={category.name}&point-value={point_val}'>{point_val}"
+                         f"</a>""</p></div>")
         return f"""{html}</div></div>"""
 
     def ask_question(self, category_name: str, point_value: int):
