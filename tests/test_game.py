@@ -1,6 +1,7 @@
 import unittest
 from game import Game
 from category import Category
+from question import Question
 
 
 class TestGame(unittest.TestCase):
@@ -28,7 +29,10 @@ class TestGame(unittest.TestCase):
         second_game.generate_categories(random_category_names)
         for category in second_game.categories:
             self.assertIs(type(category), Category)
+            self.assertIsNot(type(category), None)
             self.assertEquals(second_game.categories.count(category), 1)
+            for question in category.questions:
+                self.assertIs(type(question), Question)
             print(category.name)
 
 

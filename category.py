@@ -43,16 +43,25 @@ class Category:
         # helper method
         all_questions_json = api_request.get_questions_for_specific_category(self.name)
         grouped_questions = make_new_questions_grouped_by_difficulty(all_questions_json)
+        questions = []
+        if len(grouped_questions["easy"]) < 1:
+            question_json = api_request.get_questions_for_specific_category_by_difficulty(self.name, "easy")
+            grouped_questions["easy"].append(Question(question_json[0], 0))
+        if len(grouped_questions["medium"]) < 2:
+            question_json = api_request.get_questions_for_specific_category_by_difficulty(self.name, "medium")
+            grouped_questions["medium"] += [Question(question_json[0], 0), Question(question_json[1], 0)]
+        if len(grouped_questions["hard"]) < 2:
+            question_json = api_request.get_questions_for_specific_category_by_difficulty(self.name, "hard")
+            grouped_questions["hard"] += [Question(question_json[0], 0), Question(question_json[1], 0)]
 
-        if len(grouped_questions["easy"]) >= 1 and len(grouped_questions["medium"]) >= 2 and len(grouped_questions["hard"]) >= 2:
-            questions = [grouped_questions["easy"][0]] + grouped_questions["medium"][0:2] + grouped_questions["hard"][0:2]
-            points = 100
-            for question in questions:
-                question.point_val = points
-                points += 100
-            return questions
+        questions = [grouped_questions["easy"][0]] + grouped_questions["medium"][0:2] + grouped_questions["hard"][0:2]
 
-        return self.set_questions_fallback()
+        points = 100
+        for question in questions:
+            question.point_val = points
+            points += 100
+
+        return questions
 
 
     def get_question_by_point_val(self, point_value):
