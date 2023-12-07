@@ -12,6 +12,7 @@ class Game:
         self.categories = []
 
     def reset(self):
+        self.categories = []
         self.all_possible_categories = get_all_category_names()
         self.players.reset_all_players_score()
 
@@ -43,7 +44,7 @@ class Game:
         """
         Generates the categories to be used for the game.
         :param category_names: A list of the category names, if the value is "random" it will choose a random category.
-        :post: Categories will be a list of Category objects, sorted Alphabetically.
+        :post: Categories will be a list of Category objects, sorted Alphabetically. All category names will be regenerated.
         """
         self.categories = []
         amount_of_random_categories = category_names.count("random")

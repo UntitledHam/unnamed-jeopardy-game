@@ -25,7 +25,7 @@ class TestGame(unittest.TestCase):
             self.assertEquals(game.categories.count(category), 1)
             print(category.name)
         second_game = Game()
-        random_category_names = ["random", "random", "music", "random", "random"]
+        random_category_names = ["random", "random", "random", "random", "random"]
         second_game.generate_categories(random_category_names)
         for category in second_game.categories:
             self.assertIs(type(category), Category)

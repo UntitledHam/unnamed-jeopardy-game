@@ -24,7 +24,9 @@ class PlayerCollection:
         self.alphabetical_players.sort(key=lambda p: p.name)
 
     def remove_player(self, player_name):
-        self.players.remove(self.find_player_by_name(player_name))
+        player = self.find_player_by_name(player_name)
+        self.players.remove(player)
+        self.alphabetical_players.remove(player)
 
     def reset_all_players_score(self):
         for player in self.players:

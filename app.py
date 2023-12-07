@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect
 from game import Game
+from api_request import generate_category_dropdowns
 
 app = Flask(__name__)
 game = Game()
@@ -26,6 +27,7 @@ def home():
         <head>
             <style>
             </style>
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         </head>
         <body>
             <h1>
@@ -47,6 +49,9 @@ def home():
                 </label>
                 <input type='submit' value="Create Player">
             </form>
+            <form action="/set_categories" method="post">
+                {generate_category_dropdowns()}
+            </form> 
         </body>
     </html>
     """
