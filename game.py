@@ -12,7 +12,6 @@ class Game:
         self.categories = []
 
     def reset(self):
-        self.categories = []
         self.all_possible_categories = get_all_category_names()
         self.players.reset_all_players_score()
 
@@ -182,4 +181,5 @@ class Game:
             player.change_score(point_value)
             return correct_html
         else:
+            player.change_score(-point_value)
             return incorrect_html

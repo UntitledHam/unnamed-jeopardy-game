@@ -4,15 +4,8 @@ from game import Game
 app = Flask(__name__)
 game = Game()
 
-test_players = {"Jeff": 100, "Scott": 1000, "Abe": 5000}
-for name, score in test_players.items():
-    game.players.add_player(name)
-    game.players.find_player_by_name(name).score = score
-category_names = ["food_and_drink", "music", "geography", "random", "random"]
+category_names = ["random", "random", "random", "random", "random"]
 game.generate_categories(category_names)
-done_question = game.categories[0].get_question_by_point_val(300)
-game.categories[0].done_questions.append(done_question)
-
 
 with open("styles/board-style.css", "r") as f:
     board_style = f.read()
