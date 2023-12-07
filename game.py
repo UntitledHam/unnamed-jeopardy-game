@@ -63,7 +63,7 @@ class Game:
                 boxes_html += f"""
                         <div>
                             <p>
-                                <a href="/board">
+                                <a href="/answer-question?category={category_name}&point-value={point_value}&player={player_name}&answer={i}">
                                     {letters[i]}
                                 </a>
                                 <br><br><br>
@@ -111,13 +111,18 @@ class Game:
                 </div>"""
         return f"""{html}</div></div>"""
 
-    def ask_question(self, category_name: str, point_value: int):
+    def get_question_by_category_name_and_point_value(self, category_name, point_value):
         category = None
         for the_category in self.categories:
             if the_category.name == category_name:
                 category = the_category
                 break
         question = category.get_question_by_point_val(point_value)
+
+        return question
+
+    def ask_question(self, category_name: str, point_value: int):
+        question = self.get_question_by_category_name_and_point_value(category_name, point_value)
 
         letters = ["A", "B", "C", "D"]
         answers_html = ""
@@ -139,3 +144,12 @@ class Game:
        """
 
         return html
+
+    def answer_question(self, category_name, point_value, player_name, answer):
+        question = self.get_question_by_category_name_and_point_value(category_name, point_value)
+        correct_html = "Correct!"
+        incorrect_html = "Incorrect!"
+        if question.answers[answer] == question.correct_answer:
+            return correct_html
+        else:
+            return incorrect_html

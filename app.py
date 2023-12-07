@@ -79,6 +79,14 @@ def ask_question():
         """
     return html
 
+@app.route("/answer-question")
+def answer_question():
+    category_name = request.args.get("category", "")
+    point_value = int(request.args.get("point-value", "0"))
+    player_name = request.args.get("player_name", "")
+    answer = int(request.args.get("answer", "0"))
+    return game.answer_question(category_name, point_value, player_name, answer)
+
 
 @app.route("/win-screen")
 def win_screen():
