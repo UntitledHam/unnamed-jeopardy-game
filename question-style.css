@@ -4,7 +4,6 @@ body {
 }
 a {
     color: yellow;
-    font-size: min(180%);
 }
 h1 {
     color: yellow;
@@ -36,4 +35,30 @@ p {
         color: yellow;
     }
 
+}
+div {
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+}
+.container {
+  margin-left: 35%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+.container div {
+  background-color: blue;
+  aspect-ratio: 1;
+  text-align: center;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: min(150%);
+  border: 1px white solid;
+
+    & a {
+        color: yellow;
+        margin-right: 43%;
+
+    }
 }

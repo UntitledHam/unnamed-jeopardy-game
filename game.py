@@ -2,6 +2,7 @@ from player_collection import PlayerCollection
 from api_request import get_all_category_names
 from random import choice
 from category import Category
+from flask import request
 
 
 class Game:
@@ -25,7 +26,7 @@ class Game:
 
         if num_done_questions >= 25:
             return True
-        return False;
+        return False
 
     def generate_categories(self, category_names: list):
         """
@@ -45,6 +46,47 @@ class Game:
             self.categories.append(Category(category_name))
             self.all_possible_categories.remove(category_name)
         self.all_possible_categories = get_all_category_names()
+
+    def generate_question_buttons(self, question):
+        player_name = request.args.get("player-name", "")
+        try:
+            player = self.players.find_player_by_name(player_name)
+        except ValueError:
+            player = None
+        point_value = int(request.args.get("point-value", "0"))
+        category_name = request.args.get("category", "")
+
+        if player is not None:
+            letters = ["A", "B", "C", "D"]
+            boxes_html = """<div class="box"><div class="container">"""
+            for i in range(len(question.answers)):
+                boxes_html += f"""
+                        <div>
+                            <p>
+                                <a href="/board">
+                                    {letters[i]}
+                                </a>
+                                <br><br><br>
+                            </p>
+                            </div>"""
+            boxes_html += "</div></div>"
+
+        else:
+            boxes_html = """<div class="box"><div class="container">"""
+            for i in range(len(self.players.alphabetical_players)):
+                player_text = f"{self.players.alphabetical_players[i].name}"
+                boxes_html += f"""
+                                    <div>
+                                        <p>
+                                            <a href="/ask-question?category={category_name}&point-value={point_value}&player-name={player_text}">
+                                                {player_text}
+                                            </a>
+                                            <br><br><br>
+                                        </p>
+                                        </div>"""
+            boxes_html += "</div></div>"
+
+        return boxes_html
 
     def generate_board_html(self) -> str:
         html = """<div class="box"><div class="container">"""
@@ -76,10 +118,14 @@ class Game:
                 category = the_category
                 break
         question = category.get_question_by_point_val(point_value)
+
         letters = ["A", "B", "C", "D"]
         answers_html = ""
         for i in range(len(question.answers)):
-            answers_html += f"{letters[i]}: {question.answers[i]}<br>"
+            question_text = f"{letters[i]}: {question.answers[i]}"
+            answers_html += f"{question_text}<br>"
+
+        buttons_html = self.generate_question_buttons(question)
 
         html = f"""
         {self.players.generate_leaderboard_html()}
@@ -89,6 +135,7 @@ class Game:
         <p>
             {answers_html}
         </p>
-        """
+        {buttons_html}
+\        """
 
         return html

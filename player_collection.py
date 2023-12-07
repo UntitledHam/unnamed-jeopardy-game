@@ -4,6 +4,7 @@ from player import Player
 class PlayerCollection:
     def __init__(self):
         self.players = []
+        self.alphabetical_players = []
 
     def add_player(self, name: str):
         """
@@ -11,7 +12,10 @@ class PlayerCollection:
         :param name: Name of the player to add.
         :post: players will have another player.
         """
-        self.players.append(Player(name))
+        player = Player(name)
+        self.players.append(player)
+        self.alphabetical_players.append(player)
+        self.alphabetical_players.sort(key=lambda p: p.name)
 
     def find_player_by_name(self, name: str) -> Player:
         """
