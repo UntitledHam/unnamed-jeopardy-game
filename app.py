@@ -17,6 +17,9 @@ with open("styles/question-style.css", "r") as f:
 with open("styles/win_screen_style.css", "r") as f:
     win_screen_style = f.read()
 
+with open("styles/homepage-style.css", "r") as f:
+    homepage_style = f.read()
+
 
 @app.route("/")
 def home():
@@ -26,20 +29,24 @@ def home():
     <html>
         <head>
             <style>
-                {win_screen_style}
+                {homepage_style}
             </style>
+            <title>
+                Untitled Jeopardy Game
+            <title>
             <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         </head>
         <body>
             <h1>
                 Unnamed Jeopardy Game:
             </h1>
+            <p>
             <h2>
                 Players (Max of 4):
             </h2>
             <p>
                 {game.players.generate_player_list_html()}
-            </p>
+            </p>'
             <h2>
                 Create Player
             </h2>
@@ -50,6 +57,9 @@ def home():
                 </label>
                 <input type='submit' value="Create Player">
             </form>
+            <h2>
+                Choose Your Categories:
+            </h2>
             <form action="/set-categories" method="post">
                 {generate_category_dropdowns()}
                 <br>

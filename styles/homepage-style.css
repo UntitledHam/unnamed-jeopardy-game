@@ -1,0 +1,29 @@
+body {
+    background-color: #301e83;
+    font-family: "Times New Roman", Times, serif;
+}
+h1 {
+    color: yellow;
+    text-align: center;
+    font-size: 450%;
+}
+h2 {
+    color: gold;
+    font-size: 300%;
+}
+p {
+    color: white;
+}
+label {
+    color: white;
+}
+select {
+    color: white;
+    background-color: #37287f;
+    border-color: gold;
+}
+input {
+    background-color: #37287f;
+    color: #ffca00;
+    border: 1px solid goldenrod;
+}

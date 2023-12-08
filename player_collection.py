@@ -73,6 +73,8 @@ class PlayerCollection:
         return self.players[0]
 
     def generate_player_list_html(self):
+        if len(self.players) == 0:
+            return "No players added."
         output = ""
         for i in range(len(self.players)):
             output += f"""<p>{i+1}: {self.players[i].name}
