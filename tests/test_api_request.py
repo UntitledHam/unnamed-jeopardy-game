@@ -25,8 +25,12 @@ class TestApiRequest(unittest.TestCase):
             self.assertEquals(question.difficulty, "easy")
             self.assertEquals(question.category, "music")
 
+    def test_get_questions_for_specific_category(self):
+        question_json = get_questions_for_specific_category("music")
 
-    def test_replace(self):
-        starting_string = "general_knowledge"
-        starting_string = starting_string.replace("_", "-")
-        self.assertEquals("general-knowledge", starting_string)
+        questions = []
+        for question in question_json:
+            questions.append(Question(question, 0))
+
+        for question in questions:
+            self.assertEquals(question.category, "music")
