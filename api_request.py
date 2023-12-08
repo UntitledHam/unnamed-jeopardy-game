@@ -25,9 +25,11 @@ def get_all_category_names() -> list:
     categories = []
     request_json = make_request(f"https://the-trivia-api.com/v2/categories")
     for category, subcategory in request_json.items():
-        if category == "Film & TV":
+        if category == "Film & TV" or category == "Arts & Literature":
+            categories.append(subcategory[2])
             continue
-        categories.append(subcategory[0])
+        else:
+            categories.append(subcategory[0])
     return categories
 
 
