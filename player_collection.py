@@ -39,6 +39,7 @@ class PlayerCollection:
         player = self.find_player_by_name(player_name)
         self.players.remove(player)
         self.alphabetical_players.remove(player)
+        self.current_player_turn = None
 
     def reset_all_players_score(self):
         """
