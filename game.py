@@ -3,6 +3,7 @@ from api_request import get_all_category_names
 from random import choice
 from category import Category
 from flask import request
+from question import Question
 
 
 class Game:
@@ -32,7 +33,7 @@ class Game:
         category = choice(self.all_possible_categories)
         return category
 
-    def get_category_from_name(self, category_name):
+    def get_category_from_name(self, category_name: str) -> Category:
         """
         Searches for category by name
         :param category_name: name of category to look for
@@ -45,7 +46,7 @@ class Game:
 
         raise ValueError("Category not found.")
 
-    def check_if_all_questions_are_answered(self):
+    def check_if_all_questions_are_answered(self) -> bool:
         """
         Checks if all 5 questions from each category are done
         :return: True if all are done, false if not
@@ -79,7 +80,7 @@ class Game:
         self.categories.sort(key=lambda c: c.name)
         self.all_possible_categories = get_all_category_names()
 
-    def generate_question_buttons(self, question):
+    def generate_question_buttons(self, question: Question) -> str:
         """
         Generates HTML for question buttons
         :param question: question to generate html for
@@ -152,7 +153,7 @@ class Game:
                 </div>"""
         return f"""{html}</div></div>"""
 
-    def get_question_by_category_name_and_point_value(self, category_name, point_value):
+    def get_question_by_category_name_and_point_value(self, category_name: str, point_value: int) -> Question:
         """
         Searches for question by category name and point value
         :param category_name: category name to look for
@@ -168,7 +169,7 @@ class Game:
 
         return question
 
-    def ask_question(self, category_name: str, point_value: int):
+    def ask_question(self, category_name: str, point_value: int) -> str:
         """
         Generates HTML for the question being asked
         :param category_name: Category name of question
@@ -198,7 +199,7 @@ class Game:
 
         return html
 
-    def answer_question(self, category_name, point_value, player_name, answer):
+    def answer_question(self, category_name: str, point_value: int, player_name: str, answer: int) -> str:
         """
         Answers a question
         :param category_name: category of question
@@ -235,7 +236,7 @@ class Game:
             player.change_score(-point_value)
             return incorrect_html
 
-    def check_category_authenticity(self, category_names):
+    def check_category_authenticity(self, category_names: list):
         """
         Checks if categories are valid and if not regenerates that category,
         :post: If a category was invalid it would fix that, if not it does nothing.
@@ -245,7 +246,7 @@ class Game:
                 self.categories.remove(self.categories[i])
                 self.categories.append(Category(category_names[i]))
 
-    def skip_question(self, category_name, point_value):
+    def skip_question(self, category_name: str, point_value: int):
         """
         Skips a question
         :param category_name: The name of the category.

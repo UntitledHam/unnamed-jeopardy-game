@@ -30,7 +30,7 @@ class PlayerCollection:
         self.alphabetical_players.append(player)
         self.alphabetical_players.sort(key=lambda p: p.name)
 
-    def remove_player(self, player_name):
+    def remove_player(self, player_name: str):
         """
         Removes a player from the player list
         :param player_name: Name of the player to remove
@@ -83,7 +83,7 @@ class PlayerCollection:
         """
         self.players.sort(key=lambda p: p.score, reverse=True)
 
-    def get_top_player(self):
+    def get_top_player(self) -> Player:
         """
         Returns the object of the top player.
         :post: Sorts the players.
@@ -92,7 +92,7 @@ class PlayerCollection:
         self.sort_players()
         return self.players[0]
 
-    def generate_player_list_html(self):
+    def generate_player_list_html(self) -> str:
         """
         Generates html for player list to be used in app
         :return: html for player list

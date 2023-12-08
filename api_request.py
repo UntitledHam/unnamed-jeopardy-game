@@ -54,7 +54,7 @@ def get_all_category_names() -> list:
     return categories
 
 
-def generate_category_dropdowns():
+def generate_category_dropdowns() -> str:
     """
     Generates dropdowns for categories
     :return: html of dropdowns of categories

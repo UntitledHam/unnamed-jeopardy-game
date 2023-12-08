@@ -2,7 +2,7 @@ import api_request
 from question import Question
 
 
-def make_new_questions_grouped_by_difficulty(all_questions_json):
+def make_new_questions_grouped_by_difficulty(all_questions_json: dict) -> dict:
     """
     Returns dict with lists of questions as values grouped by difficulty, made to remove excess API calls
     :param all_questions_json: all questions to sort through
@@ -23,7 +23,7 @@ def make_new_questions_grouped_by_difficulty(all_questions_json):
 
 
 class Category:
-    def __init__(self, name):
+    def __init__(self, name: str):
         """
         Creates a category with name and set of questions
         :param name: name of category
@@ -32,7 +32,7 @@ class Category:
         self.questions = self.set_questions()
         self.done_questions = []
 
-    def set_questions(self):
+    def set_questions(self) -> list:
         """
         Sets 5 questions to the category, 1 easy, 2 med, 2 hard with point values from 100-500
         :post: self.questions gets questions added to it
@@ -58,7 +58,7 @@ class Category:
 
         return questions
 
-    def get_question_by_point_val(self, point_value):
+    def get_question_by_point_val(self, point_value: int) -> Question:
         """
         Searches questions to find question based off point value
         :param point_value: point value to look for
@@ -79,7 +79,7 @@ class Category:
                 return self.questions[middle_index]
         raise ValueError("Value is not in the list.")
 
-    def find_done_point_vals(self):
+    def find_done_point_vals(self) -> list:
         """
         Returns all point values of questions that have already been done
         :return: done point values
@@ -89,7 +89,7 @@ class Category:
             done_point_vals.append(question.get_point_val())
         return done_point_vals
 
-    def question_done(self, given_question):
+    def question_done(self, given_question: Question):
         """
         Adds a question to done_questions list
         :param given_question: question to add

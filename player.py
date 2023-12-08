@@ -7,7 +7,7 @@ class Player:
         self.name = name
         self.score = 0
 
-    def change_score(self, value):
+    def change_score(self, value: int):
         """
         Changes score of player
         :param value: how much score to change
