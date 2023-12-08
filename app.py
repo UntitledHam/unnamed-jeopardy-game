@@ -5,18 +5,12 @@ from api_request import generate_category_dropdowns
 app = Flask(__name__)
 game = Game()
 
-category_names = ["random", "random", "random", "random", "random"]
-game.generate_categories(category_names)
-
 with open("styles/board-style.css", "r") as f:
     board_style = f.read()
-
 with open("styles/question-style.css", "r") as f:
     question_style = f.read()
-
 with open("styles/win_screen_style.css", "r") as f:
     win_screen_style = f.read()
-
 with open("styles/homepage-style.css", "r") as f:
     homepage_style = f.read()
 
