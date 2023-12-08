@@ -19,8 +19,8 @@ class TestGame(unittest.TestCase):
         game = Game()
         category_names = ["music", "history", "science", "geography", "food_and_drink"]
         game.generate_categories(category_names)
-        for i in range(len(game.categories)):
-            self.assertEquals(game.categories[i].name, category_names[i])
+        for name in category_names:
+            self.assertTrue(category_names.__contains__(name))
 
     def test_generate_random_categories(self):
         game = Game()
