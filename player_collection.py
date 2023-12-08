@@ -19,6 +19,8 @@ class PlayerCollection:
         player = Player(name)
         if len(self.players) >= 4:
             raise ValueError("Cannot have more than 4 players.")
+        if len(name) == 0:
+            raise ValueError("Player name must not be empty.")
         self.players.append(player)
         self.alphabetical_players.append(player)
         self.alphabetical_players.sort(key=lambda p: p.name)

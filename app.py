@@ -77,6 +77,29 @@ def set_categories():
     categories = []
     for i in range(5):
         categories.append(request.form.get(f"option-{i}", "random"))
+    for category in categories:
+        if categories.count(category) > 1 and category != "random":
+            return f"""
+        <!DOCTYPE html>
+        <html>
+            <head>
+            <style>
+                {win_screen_style}
+            </style>
+            <title>
+                Error
+            </title>
+            </head>
+            <body>
+                <h1>
+                    Cannot have repeated categories.
+                </h1>
+                <a href="/">
+                    Return home.
+                </a>
+            </body>
+        </html>
+        """
     game.generate_categories(categories)
     return redirect("/board")
 
@@ -84,7 +107,27 @@ def set_categories():
 @app.route("/board")
 def board():
     if len(game.players.players) == 0:
-        return redirect("/")
+        return f"""
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <style>
+                    {win_screen_style}
+                </style>
+                <title>
+                    Error
+                </title>
+            </head>
+            <body>
+                <h1>
+                    Please add a player.
+                </h1>
+                <a href="/">
+                    Return home.
+                </a>
+            </body>
+        </html>
+        """
     game.players.next_turn()
     html = f"""
     <!DOCTYPE html>
@@ -204,11 +247,17 @@ def add_player():
         <!DOCTYPE html>
         <html>
             <head>
+                <style>
+                    {win_screen_style}
+                </style>
+                <title>
+                    Error
+                </title>
             </head>
             <body>
-                <p>
-                    Cannot have more than 4 players.
-                </p>
+                <h1>
+                    Player must not be a duplicate or have player count exceed 4.
+                </h1>
                 <a href="/">
                     Return home.
                 </a>

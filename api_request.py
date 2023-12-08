@@ -44,22 +44,7 @@ def generate_category_dropdowns():
             modified_category_name = category_name.replace("_", " ").title()
             output_html += f"""
             <option value="{category_name}">{modified_category_name}</option><br>"""
-        output_html += """</select><script>
-            $(document).ready(function() {
-                $("select").change(function() {
-                    var selectedValue = $(this).val();
-                    $("select").not(this).each(function() {
-                        $(this).find("option").each(function() {
-                            var optionValue = $(this).val();
-                            if (selectedValue.includes(optionValue) && !(optionValue.includes("random"))){
-                                $(this).remove();
-                                location.reload();
-                            }
-                        });
-                    });
-                });
-            });
-        </script>"""
+        output_html += """</select>"""
     return output_html
 
 
