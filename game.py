@@ -58,6 +58,7 @@ class Game:
             category_name = self.get_random_category_name()
             self.categories.append(Category(category_name))
             self.all_possible_categories.remove(category_name)
+        self.check_category_authenticity(category_names)
         self.categories.sort(key=lambda c: c.name)
         self.all_possible_categories = get_all_category_names()
 
@@ -186,3 +187,10 @@ class Game:
         else:
             player.change_score(-point_value)
             return incorrect_html
+
+    def check_category_authenticity(self, category_names):
+        for i in range(len(category_names)):
+            if self.categories[i] is None or self.categories[i].questions[4] is None:
+                self.categories.remove(self.categories[i])
+                self.categories.append(Category(category_names[i]))
+
