@@ -48,7 +48,7 @@ class TestPlayerCollection(unittest.TestCase):
             player.score += randint(100, 500)
         for player in players.players:
             self.assertGreaterEqual(player.score, 100)
-        players.reset_all_players_score()
+        players.reset_all_players()
         for player in players.players:
             self.assertEquals(player.score, 0)
 

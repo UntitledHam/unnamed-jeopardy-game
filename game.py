@@ -23,7 +23,7 @@ class Game:
         self.categories = []
         self.all_possible_categories = get_all_category_names()
         self.categories = []
-        self.players.reset_all_players_score()
+        self.players.reset_all_players()
 
     def get_random_category_name(self) -> str:
         """

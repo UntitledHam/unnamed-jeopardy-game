@@ -41,20 +41,21 @@ class PlayerCollection:
         self.alphabetical_players.remove(player)
         self.current_player_turn = None
 
-    def reset_all_players_score(self):
+    def reset_all_players(self):
         """
         Sets every player's score to 0
         :post: every player in players has 0 score
         """
         for player in self.players:
             player.score = 0
+        self.current_player_turn = None
 
     def next_turn(self):
         """
         Cycles to next player in alphabetical_players
         :post: sets current_player_turn to next player
         """
-        self.alphabetical_players.sort()
+        self.alphabetical_players.sort(key=lambda p: p.name)
         skip = False
         if self.current_player_turn is None:
             self.current_player_turn = self.alphabetical_players[0]
