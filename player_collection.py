@@ -54,6 +54,7 @@ class PlayerCollection:
         Cycles to next player in alphabetical_players
         :post: sets current_player_turn to next player
         """
+        self.alphabetical_players.sort()
         skip = False
         if self.current_player_turn is None:
             self.current_player_turn = self.alphabetical_players[0]
