@@ -3,6 +3,11 @@ from question import Question
 
 
 def make_new_questions_grouped_by_difficulty(all_questions_json):
+    """
+    Returns dict with lists of questions as values grouped by difficulty, made to remove excess API calls
+    :param all_questions_json: all questions to sort through
+    :return: a dict with difficulties as keys, and questions as values
+    """
     questions_grouped_by_difficulty = {"easy": [], "medium": [], "hard": []}
     for question_json in all_questions_json:
         difficulty = question_json["difficulty"]
@@ -19,13 +24,19 @@ def make_new_questions_grouped_by_difficulty(all_questions_json):
 
 class Category:
     def __init__(self, name):
+        """
+        Creates a category with name and set of questions
+        :param name: name of category
+        """
         self.name = name
         self.questions = self.set_questions()
         self.done_questions = []
 
     def set_questions(self):
-        # Selects 5 random questions to add to the category: 1 easy, 2 med, 2 hard, with varying point vals
-        # helper method
+        """
+        Sets 5 questions to the category, 1 easy, 2 med, 2 hard with point values from 100-500
+        :post: self.questions gets questions added to it
+        """
         all_questions_json = api_request.get_questions_for_specific_category(self.name)
         grouped_questions = make_new_questions_grouped_by_difficulty(all_questions_json)
         if len(grouped_questions["easy"]) < 1:
@@ -48,8 +59,12 @@ class Category:
         return questions
 
     def get_question_by_point_val(self, point_value):
-        # returns questions based on point value, returns valerror if no question is found
-
+        """
+        Searches questions to find question based off point value
+        :param point_value: point value to look for
+        :raise ValueError: if point value is not in the questions list, or point value is invalid
+        :return: question with corresponding point value
+        """
         if point_value < 100 or point_value > 500 or point_value % 100 != 0:
             raise ValueError("Point Value is Invalid")
         lowest_index = 0
@@ -65,12 +80,21 @@ class Category:
         raise ValueError("Value is not in the list.")
 
     def find_done_point_vals(self):
+        """
+        Returns all point values of questions that have already been done
+        :return: done point values
+        """
         done_point_vals = []
         for question in self.done_questions:
             done_point_vals.append(question.get_point_val())
         return done_point_vals
 
     def question_done(self, given_question):
+        """
+        Adds a question to done_questions list
+        :param given_question: question to add
+        :post: done_questions has an extra question
+        """
         for question in self.questions:
             if question.get_id() == given_question.get_id():
                 self.done_questions.append(question)

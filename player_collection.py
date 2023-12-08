@@ -3,6 +3,9 @@ from player import Player
 
 class PlayerCollection:
     def __init__(self):
+        """
+        Creates a PlayerCollection with a list of players
+        """
         self.players = []
         self.alphabetical_players = []
         self.current_player_turn = None
@@ -11,6 +14,7 @@ class PlayerCollection:
         """
         Adds a player to the players list.
         :param name: Name of the player to add.
+        :raise ValueError: if player already exists or are more than 4 players
         :post: players will have another player.
         """
         player_names = list(map(lambda p: p.name, self.players))
@@ -26,15 +30,28 @@ class PlayerCollection:
         self.alphabetical_players.sort(key=lambda p: p.name)
 
     def remove_player(self, player_name):
+        """
+        Removes a player from the player list
+        :param player_name: Name of the player to remove
+        :post: players will have one less player
+        """
         player = self.find_player_by_name(player_name)
         self.players.remove(player)
         self.alphabetical_players.remove(player)
 
     def reset_all_players_score(self):
+        """
+        Sets every player's score to 0
+        :post: every player in players has 0 score
+        """
         for player in self.players:
             player.score = 0
 
     def next_turn(self):
+        """
+        Cycles to next player in alphabetical_players
+        :post: sets current_player_turn to next player
+        """
         skip = False
         if self.current_player_turn is None:
             self.current_player_turn = self.alphabetical_players[0]
@@ -75,6 +92,10 @@ class PlayerCollection:
         return self.players[0]
 
     def generate_player_list_html(self):
+        """
+        Generates html for player list to be used in app
+        :return: html for player list
+        """
         if len(self.players) == 0:
             return "No players added."
         output = ""
