@@ -12,5 +12,5 @@ We used Flask as our Library in order to make the front end web environment. We 
 We used sorting to sort the players in order of score to make a functional leaderboard. We also had a separate list sorted alphabetically of the players to make the turn order. For searching we searched through all the questions for questions of certain point values and category names. We also searched for players by name.
 # How we used functional programming
 We used functional programming with python’s inbuilt sorting and searching functions in order to search through Objects with keys. Also we used other inbuilt functions like filter to make our job easier. 
-
+# 
 

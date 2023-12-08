@@ -14,6 +14,7 @@ class Question:
         shuffle(self.answers)
         self.question_text: str = question_json["question"]["text"]
         self.difficulty = question_json["difficulty"]
+        self.category = question_json["category"]
         self.point_val = point_value
 
     def is_right_answer(self, answer: str) -> bool:
