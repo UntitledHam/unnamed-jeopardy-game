@@ -7,11 +7,18 @@ from flask import request
 
 class Game:
     def __init__(self):
+        """
+        Creates a game with a playercollection
+        """
         self.players = PlayerCollection()
         self.all_possible_categories = get_all_category_names()
         self.categories = []
 
     def reset(self):
+        """
+        Resets categories and players score in order to be able to play a new game
+        :post: Categories is empty list, all_possible_categories is reset, and players scores are reset
+        """
         self.categories = []
         self.all_possible_categories = get_all_category_names()
         self.categories = []
@@ -26,6 +33,12 @@ class Game:
         return category
 
     def get_category_from_name(self, category_name):
+        """
+        Searches for category by name
+        :param category_name: name of category to look for
+        :raise ValueError: if category not found
+        :return: the category
+        """
         for category in self.categories:
             if category.name == category_name:
                 return category
@@ -33,6 +46,10 @@ class Game:
         raise ValueError("Category not found.")
 
     def check_if_all_questions_are_answered(self):
+        """
+        Checks if all 5 questions from each category are done
+        :return: True if all are done, false if not
+        """
         num_done_questions = 0
         for category in self.categories:
             num_done_questions += len(category.done_questions)
@@ -63,6 +80,11 @@ class Game:
         self.all_possible_categories = get_all_category_names()
 
     def generate_question_buttons(self, question):
+        """
+        Generates HTML for question buttons
+        :param question: question to generate html for
+        :return: html of question buttons
+        """
         player_name = request.args.get("player-name", "")
         try:
             player = self.players.find_player_by_name(player_name)
@@ -104,6 +126,10 @@ class Game:
         return boxes_html
 
     def generate_board_html(self) -> str:
+        """
+        Generates board html
+        :return: board html
+        """
         html = """<div class="box"><div class="container">"""
         for category in self.categories:
             modified_category_name = category.name.replace("_", "<br>").title()
@@ -127,6 +153,12 @@ class Game:
         return f"""{html}</div></div>"""
 
     def get_question_by_category_name_and_point_value(self, category_name, point_value):
+        """
+        Searches for question by category name and point value
+        :param category_name: category name to look for
+        :param point_value: point value to look for
+        :return: the question
+        """
         category = None
         for the_category in self.categories:
             if the_category.name == category_name:
@@ -137,6 +169,12 @@ class Game:
         return question
 
     def ask_question(self, category_name: str, point_value: int):
+        """
+        Generates HTML for the question being asked
+        :param category_name: Category name of question
+        :param point_value: Point value of question
+        :return: html that asks a question
+        """
         question = self.get_question_by_category_name_and_point_value(category_name, point_value)
 
         letters = ["A", "B", "C", "D"]
@@ -161,6 +199,15 @@ class Game:
         return html
 
     def answer_question(self, category_name, point_value, player_name, answer):
+        """
+        Answers a question
+        :param category_name: category of question
+        :param point_value: point value of question
+        :param player_name: player who answered
+        :param answer: answer submitted
+        :post: changes players score based on questions point value and if question was incorrect or not
+        :return: html based on if answer was correct or incorrect
+        """
         question = self.get_question_by_category_name_and_point_value(category_name, point_value)
         category = self.get_category_from_name(category_name)
         player = self.players.find_player_by_name(player_name)
@@ -189,6 +236,9 @@ class Game:
             return incorrect_html
 
     def check_category_authenticity(self, category_names):
+        """
+        Possible bug-fixer
+        """
         for i in range(len(category_names)):
             if self.categories[i] is None or self.categories[i].questions[4] is None:
                 self.categories.remove(self.categories[i])
