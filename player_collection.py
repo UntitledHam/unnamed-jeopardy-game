@@ -1,4 +1,5 @@
 from player import Player
+from flask import request
 
 
 class PlayerCollection:
@@ -115,6 +116,12 @@ class PlayerCollection:
         :post: Sorts the players.
         :return: The HTML of the leaderboard.
         """
+        category = request.args.get("category", "")
+        player_name = request.args.get("player-name", "")
+        point_value = int(request.args.get("point-value", "0"))
+        skip_button = ""
+        if category != "" and player_name == "":
+            skip_button += f"<a href=/skip-question?category={category}&point-value={point_value}>Skip Question</a>"
         self.sort_players()
         leaderboard_html = ""
         for i in range(len(self.players)):
@@ -129,7 +136,12 @@ class PlayerCollection:
             {leaderboard_html}
         </p>
         <h1>
-            Turn: {self.current_player_turn.name}
+            {self.current_player_turn.name}'s Turn
         </h1>
+        <br>
+        <h2>
+            {skip_button}
+        </h2>
+        <br>
         </div>"""
 

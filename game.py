@@ -237,10 +237,22 @@ class Game:
 
     def check_category_authenticity(self, category_names):
         """
-        Possible bug-fixer
+        Checks if categories are valid and if not regenerates that category,
+        :post: If a category was invalid it would fix that, if not it does nothing.
         """
         for i in range(len(category_names)):
             if self.categories[i] is None or self.categories[i].questions[4] is None:
                 self.categories.remove(self.categories[i])
                 self.categories.append(Category(category_names[i]))
+
+    def skip_question(self, category_name, point_value):
+        """
+        Skips a question
+        :param category_name: The name of the category.
+        :param point_value: The points the question is worth, to find it.
+        :post: Adds the question to be skipped to the done questions.
+        """
+        question = self.get_question_by_category_name_and_point_value(category_name, point_value)
+        category = self.get_category_from_name(category_name)
+        category.done_questions.append(question)
 

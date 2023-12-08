@@ -278,5 +278,13 @@ def remove_player():
         return "<h1>Invalid Player</h1>"
 
 
+@app.route("/skip-question")
+def skip_question():
+    category_name = request.args.get("category", "")
+    point_value = int(request.args.get("point-value", "0"))
+    game.skip_question(category_name, point_value)
+    return redirect("/board")
+
+
 if __name__ == "__main__":
     app.run("localhost", debug=True)
