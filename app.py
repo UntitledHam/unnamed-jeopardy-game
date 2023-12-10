@@ -1,6 +1,9 @@
 from flask import Flask, request, redirect
 from game import Game
 from api_request import generate_category_dropdowns
+import webbrowser
+from threading import Timer
+import os
 
 app = Flask(__name__)
 game = Game()
@@ -280,5 +283,14 @@ def skip_question():
     return redirect("/board")
 
 
+def open_browser():
+    """
+    Automatically opens the web browser on code running.
+    """
+    if not os.environ.get("WERKZEUG_RUN_MAIN"):
+        webbrowser.open('http://127.0.0.1:5000/', 0, autoraise=True)
+
+
 if __name__ == "__main__":
+    Timer(1, open_browser).start()
     app.run("localhost", debug=True)
